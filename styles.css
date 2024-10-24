@@ -44,3 +44,26 @@ h2 {
     margin: 0 10px;
     text-decoration: none;
 }
+element.style {
+}
+:root {
+    --swiper-theme-color: #007aff;
+}
+<style>
+@supports (padding:max(16px,32px)) {
+    :root {
+        --tabbar-padding-bottom: max(16px, var(--safe-area-inset-bottom));
+    }
+}
+<style>
+@supports (padding:env(safe-area-inset-bottom)) {
+    :root {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    }
+}
+
+<style>
+:root {
+    --safe-area-inset-bottom: 0px;
+    --tabbar-padding-bottom: 16px;
+}
