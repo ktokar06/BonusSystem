@@ -7,6 +7,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
 .header {
     text-align: center;
     padding: 20px;
@@ -19,56 +20,33 @@ body {
     padding: 20px;
     margin-bottom: 20px;
 }
-.bonus-container {
-    background-color: #e7f3ff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-    flex: 0;
-}
 .bonus {
     margin-bottom: 15px;
     padding: 15px;
     background-color: #d1e7ff;
     border-left: 5px solid #0056b3;
 }
+
 h2 {
     color: #333;
 }
+
 .footer {
     background-color: #0056b3;
     color: white;
     text-align: center;
     padding: 10px;
 }
+
 .footer a {
     color: white;
     margin: 0 10px;
     text-decoration: none;
 }
-element.style {
-}
+
 :root {
     --swiper-theme-color: #007aff;
-}
-<style>
-@supports (padding:max(16px,32px)) {
-    :root {
-        --tabbar-padding-bottom: max(16px, var(--safe-area-inset-bottom));
-    }
-}
-<style>
-@supports (padding:env(safe-area-inset-bottom)) {
-    :root {
-        --safe-area-inset-bottom: env(safe-area-inset-bottom);
-    }
-}
-
-<style>
-:root {
     --safe-area-inset-bottom: 0px;
     --tabbar-padding-bottom: 16px;
 }
+
