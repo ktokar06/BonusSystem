@@ -670,8 +670,18 @@ div {
 header {
     background-color: white;
 }
+.v1-c-kTtjfV {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--v1-space-x6);
+    border-top: 2px solid var(--v1-colors-divider_thin);
+    background-color: white;
+}
 
-
+<style>
+.v1-c-hYYuhA {
+    speak: normal;
+}
 
 
 
