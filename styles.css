@@ -7,69 +7,64 @@ body {
     color: #333;
 }
 
-/* Стили заголовка */
 header {
-    background-color: transparent; /* Убираем цвет фона */
-    color: #fff; /* Цвет текста */
+    background-color: white;
+    width:100%;
+    color: #fff;
     padding: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 800px;
     margin: 0 auto;
-    box-shadow: none; /* Убираем тень */
+    box-shadow: none; 
 }
 
-/* Стили профиля пользователя */
 .user-profile {
-    background-color: transparent; /* Убираем цвет фона */
+    background-color: transparent;
     padding: 15px;
     border-radius: 25px;
-    box-shadow: none; /* Убираем тень */
+    box-shadow: none;
 }
 
-/* Стили для кнопок в заголовке */
 #header-actions-bar {
-    display: flex; /* Для расположения кнопок по горизонтали */
-    align-items: center; /* Вертикальное выравнивание кнопок */
+    display: flex;
+    align-items: center;
 }
-
-/* Общие стили кнопок */
 button {
-    background-color: transparent; /* Убираем фон кнопок */
-    border: none; /* Убираем рамку */
-    border-radius: 5px; /* Закругленные углы */
-    padding: 15px 20px; /* Увеличенные отступы для кнопки */
-    font-size: 16px; /* Увеличиваем размер шрифта */
-    color: #999; /* Цвет текста кнопок (серый) */
-    cursor: pointer; /* Указатель при наведении */
-    transition: color 0.3s, transform 0.2s; /* Плавный переход цвета текста и эффект масштабирования */
-    display: flex; /* Для выравнивания иконок */
-    align-items: center; /* Вертикальное выравнивание иконок */
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-size: 16px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
 }
 
 button:hover {
-    color: #777; /* Цвет текста при наведении (темнее серого) */
-    transform: scale(1.05); /* Увеличение кнопки при наведении */
+    color: #777;
+    transform: scale(1.05);
 }
 
-/* Стили для иконок внутри кнопок */
 button svg {
-    margin-right: 8px; /* Отступ между иконкой и текстом */
-    fill: #999; /* Цвет иконок */
-    transition: fill 0.3s; /* Плавный переход цвета иконок */
+    margin-right: 8px;
+    fill: #999;
+    transition: fill 0.3s;
 }
 
 button:hover svg {
-    fill: #777; /* Цвет иконок при наведении */
+    fill: #777;
 }
 
-/* Стили логотипа */
 .logo {
-    width: 300px; /* Увеличиваем размер логотипа (или 400px) */
-    height: auto; /* Авто высота */
-    fill: #5f9ea0; /* Небесно-голубой */
+    width: 300px;
+    height: auto;
+    fill: #5f9ea0;
 }
+
+
 
 
 
@@ -143,18 +138,24 @@ button:hover svg {
     .v1-c-fUDpwJ-fbymLd-isAuthorized-true {
         position: sticky;
         top: 0px;
+        vertical-align: middle;
+        justify-content: center;
     }
 }
 <style>
 @media (min-width: 1024px) {
     .v1-c-fUDpwJ {
         background-color: inherit;
+        vertical-align: middle;
+        justify-content: center;
     }
 }
 <style>
 @media (min-width: 320px) {
     .v1-c-fUDpwJ {
         padding: var(--v1-sizes-x4) var(--v1-sizes-x5);
+        vertical-align: middle;
+        justify-content: center;
     }
 }
 <style>
@@ -169,6 +170,7 @@ button:hover svg {
     line-height: var(--v1-lineHeights-bodyM_tight);
     letter-spacing: var(--v1-letterSpacings-l0);
     font-weight: var(--v1-fontWeights-bodyRegular);
+    vertical-align: middle;
 }
 <style>
 .v1-c-hYYuhA {
@@ -665,3 +667,13 @@ div {
     display: block;
     unicode-bidi: isolate;
 }
+header {
+    background-color: white;
+}
+
+
+
+
+
+
+
