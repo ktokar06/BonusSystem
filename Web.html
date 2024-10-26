@@ -99,6 +99,45 @@
         </div>
     </div>
 
+    <div class="container px-4 py-5">
+        <div class="row align-items-stretch">
+            <div class="col-md-6">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('unsplash-photo-1.jpg'); height: 100%;">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Название Игры</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="p-4">
+                    <h3 class="fw-bold">Описание Игры</h3>
+                    <p>Увлекательное приключение, которое погружает вас в мир фантазий и новых возможностей. Каждый
+                        уровень открывает что-то новое!</p>
+                    <ul class="list-unstyled">
+                        <li class="d-flex align-items-center">
+                            <svg class="bi me-2" width="1em" height="1em">
+                                <use xlink:href="#geo-fill"></use>
+                            </svg>
+                            <small>Место действия: Земля</small>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <svg class="bi me-2" width="1em" height="1em">
+                                <use xlink:href="#calendar3"></use>
+                            </svg>
+                            <small>Длительность: 3 часа</small>
+                        </li>
+                    </ul>
+                    <button
+                        onclick="sendEventToAnalytics('[landing] Game section', 'landing-game', {clickToGameBlock: 'Играть'}); goLink('https://example.com/game', true);"
+                        class="btn btn-primary">Играть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="container px-4 py-5" id="hanging-icons">
         <h2 class="pb-2 border-bottom">Каждый месяц выбирайте категории с кешбэком</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
