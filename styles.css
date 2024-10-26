@@ -1,67 +1,186 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
     color: #333;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Header */
+
+.container {
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-block {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0 15px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #333;
+}
+
 header {
     background-color: white;
     width: 100%;
     padding: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
-    width: 700px;
+    width: 60px;
     height: auto;
-    fill: #5f9ea0;
-    margin-bottom: 20px;
 }
 
 #header-actions-bar {
     display: flex;
     align-items: center;
 }
-/* Button */
+
 button {
     background-color: transparent;
     border: none;
     border-radius: 5px;
-    padding: 15px 20px;
+    padding: 10px 15px;
     font-size: 16px;
-    color: #999;
+    color: #555;
     cursor: pointer;
     transition: color 0.3s, transform 0.2s;
     display: flex;
     align-items: center;
 }
 
-button:hover {
-    color: #777;
-    transform: scale(1.05);
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 20px 0;
 }
-/* Footer */
+
+.search-input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    flex: 1;
+    font-size: 16px;
+}
+
+.search-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.how-to-choose {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.how-to-choose p {
+    flex: 1;
+    margin: 10px 0;
+}
+
+.how-to-choose img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.land_main_cashback_cat_item {
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.text-center {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#featured-3 h3 {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+}
+
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
-    font-size: 18px;
+    padding: 20px 0;
+    font-size: 16px;
     color: #999;
     background-color: white;
-    word-wrap: break-word;
     border-top: 1px solid #ccc;
     text-align: center;
-    height: 100px;
 }
+
+.cashback-categories {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cashback-categories img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.section-title {
+    font-size: 26px;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.stretch-text {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+
+
+
+
 
 
 
