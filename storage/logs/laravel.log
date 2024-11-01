@@ -370,3 +370,153 @@ connection to server at \"127.0.0.1\", port 5432 failed: FATAL:  password authen
 #10 /home/tobecomeawind/Devs/laravel_train/artisan(13): Illuminate\\Foundation\\Application->handleCommand()
 #11 {main}
 "} 
+[2024-11-01 03:26:59] local.ERROR: syntax error, unexpected identifier "CreateUsersTable", expecting "{" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected identifier \"CreateUsersTable\", expecting \"{\" at /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_030113_users_table.php:7)
+[stacktrace]
+#0 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(149): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#1 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(556): Illuminate\\Filesystem\\Filesystem->requireOnce('/home/tobecomea...')
+#2 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(115): Illuminate\\Database\\Migrations\\Migrator->requireFiles(Array)
+#3 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#4 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#5 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#6 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#7 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#8 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#9 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#10 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#11 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#12 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#13 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#15 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /home/tobecomeawind/Devs/laravel_train/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#21 {main}
+"} 
+[2024-11-01 03:28:00] local.ERROR: syntax error, unexpected token ")", expecting "{" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \")\", expecting \"{\" at /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_030113_users_table.php:15)
+[stacktrace]
+#0 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(149): Illuminate\\Filesystem\\Filesystem::Illuminate\\Filesystem\\{closure}()
+#1 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(556): Illuminate\\Filesystem\\Filesystem->requireOnce('/home/tobecomea...')
+#2 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(115): Illuminate\\Database\\Migrations\\Migrator->requireFiles(Array)
+#3 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#4 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#5 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#6 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#7 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#8 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#9 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#10 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#11 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#12 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#13 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#14 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#15 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /home/tobecomeawind/Devs/laravel_train/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#21 {main}
+"} 
+[2024-11-01 03:28:58] local.ERROR: Cannot declare class CreateUsersTable, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class CreateUsersTable, because the name is already in use at /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_030113_users_table.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-11-01 03:29:40] local.ERROR: Cannot declare class CreateUsersTable_, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class CreateUsersTable_, because the name is already in use at /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_030113_users_table.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-11-01 03:29:58] local.ERROR: Cannot declare class CreateUsers, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class CreateUsers, because the name is already in use at /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_030113_users_table.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-11-01 03:40:03] local.ERROR: Cannot declare class CreateUsers, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class CreateUsers, because the name is already in use at /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_033641_create_table_users.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2024-11-01 03:40:23] local.ERROR: SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation "users" already exists (Connection: pgsql, SQL: create table "users" ("id" varchar(16) not null, "login" varchar(64) not null, "password" varchar(64) not null, "type" varchar(255) check ("type" in ('юр', 'физ')) not null)) {"exception":"[object] (Illuminate\\Database\\QueryException(code: 42P07): SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation \"users\" already exists (Connection: pgsql, SQL: create table \"users\" (\"id\" varchar(16) not null, \"login\" varchar(64) not null, \"password\" varchar(64) not null, \"type\" varchar(255) check (\"type\" in ('юр', 'физ')) not null)) at /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php:825)
+[stacktrace]
+#0 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('create table \"u...', Array, Object(Closure))
+#1 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate\\Database\\Connection->run('create table \"u...', Array, Object(Closure))
+#2 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(117): Illuminate\\Database\\Connection->statement('create table \"u...')
+#3 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#4 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#5 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(358): Illuminate\\Database\\Schema\\Builder->create('users', Object(Closure))
+#6 /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_033641_create_table_users.php(15): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#7 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(475): CreateTableUsers->up()
+#8 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreateTableUsers), 'up')
+#9 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#10 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#11 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreateTableUsers), 'up')
+#12 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#13 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(736): Illuminate\\Console\\View\\Components\\Task->render('2024_11_01_0336...', Object(Closure))
+#14 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2024_11_01_0336...', Object(Closure))
+#15 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(179): Illuminate\\Database\\Migrations\\Migrator->runUp('/home/tobecomea...', 3, false)
+#16 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(122): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#17 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#18 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#19 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#20 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#21 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#22 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#23 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#24 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#25 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#26 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#27 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#28 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#29 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#30 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#31 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 /home/tobecomeawind/Devs/laravel_train/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#35 {main}
+
+[previous exception] [object] (PDOException(code: 42P07): SQLSTATE[42P07]: Duplicate table: 7 ERROR:  relation \"users\" already exists at /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php:571)
+[stacktrace]
+#0 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php(571): PDOStatement->execute()
+#1 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php(812): Illuminate\\Database\\Connection->Illuminate\\Database\\{closure}('create table \"u...', Array)
+#2 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php(779): Illuminate\\Database\\Connection->runQueryCallback('create table \"u...', Array, Object(Closure))
+#3 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Connection.php(560): Illuminate\\Database\\Connection->run('create table \"u...', Array, Object(Closure))
+#4 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Schema/Blueprint.php(117): Illuminate\\Database\\Connection->statement('create table \"u...')
+#5 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(564): Illuminate\\Database\\Schema\\Blueprint->build(Object(Illuminate\\Database\\PostgresConnection), Object(Illuminate\\Database\\Schema\\Grammars\\PostgresGrammar))
+#6 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Schema/Builder.php(418): Illuminate\\Database\\Schema\\Builder->build(Object(Illuminate\\Database\\Schema\\Blueprint))
+#7 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(358): Illuminate\\Database\\Schema\\Builder->create('users', Object(Closure))
+#8 /home/tobecomeawind/Devs/laravel_train/database/migrations/2024_11_01_033641_create_table_users.php(15): Illuminate\\Support\\Facades\\Facade::__callStatic('create', Array)
+#9 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(475): CreateTableUsers->up()
+#10 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(400): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\PostgresConnection), Object(CreateTableUsers), 'up')
+#11 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Concerns/ManagesTransactions.php(30): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}(Object(Illuminate\\Database\\PostgresConnection))
+#12 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(408): Illuminate\\Database\\Connection->transaction(Object(Closure))
+#13 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreateTableUsers), 'up')
+#14 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/View/Components/Task.php(40): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#15 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(736): Illuminate\\Console\\View\\Components\\Task->render('2024_11_01_0336...', Object(Closure))
+#16 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(212): Illuminate\\Database\\Migrations\\Migrator->write('Illuminate\\\\Cons...', '2024_11_01_0336...', Object(Closure))
+#17 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(179): Illuminate\\Database\\Migrations\\Migrator->runUp('/home/tobecomea...', 3, false)
+#18 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(122): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#19 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(116): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#20 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(615): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#21 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(109): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#22 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(88): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->runMigrations()
+#23 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#24 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#25 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#26 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#27 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Container/Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#28 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(213): Illuminate\\Container\\Container->call(Array)
+#29 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Command/Command.php(279): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#30 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Console/Command.php(182): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#31 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(1047): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#32 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(316): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#33 /home/tobecomeawind/Devs/laravel_train/vendor/symfony/console/Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#34 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#35 /home/tobecomeawind/Devs/laravel_train/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#36 /home/tobecomeawind/Devs/laravel_train/artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#37 {main}
+"} 
+[2024-11-01 03:43:03] local.ERROR: Cannot declare class CreateTableUsers, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class CreateTableUsers, because the name is already in use at /home/tobecomeawind/Devs/laravel_train/database/migrations/test.php:7)
+[stacktrace]
+#0 {main}
+"} 
