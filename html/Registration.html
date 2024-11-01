@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Test</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #header {
+            margin-left: 10%;
+        }
+        .form-signin {
+            max-width: 400px;
+            margin: auto;
+        }
+
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+ <header id="header" class="v1-c-hYYuhA v1-c-fUDpwJ v1-c-fUDpwJ-fbymLd-isAuthorized-true">
+        <div class="v1-c-hYYuhA v1-c-hUZzbq">
+            <a aria-label="Изображение Логотип ВТБ" data-test-id="logoLink" class="v1-c-jTlMYo" href="/">
+                <svg width="60" height="36" fill="none" xmlns="http://www.w3.org/2000/svg" class="v1-c-dpOxmw">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M16.785 10.8h-13.8L3.981 8h13.8l-.996 2.8Zm-.498 1.4h-13.8L1.49 15h13.8l.996-2.8Zm-1.491 4.2H.995L0 19.2h13.8l.995-2.8Z"
+                        fill="#0AF"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M50.607 25.315h2.509c.952 0 1.529-.222 1.932-.72.202-.25.49-.692.49-1.522 0-.83-.288-1.412-.864-1.827-.346-.25-.808-.388-1.587-.388h-2.48v4.457ZM47.29 28V12h10.845l-.952 2.685h-6.576v3.543h2.682c2.163 0 3.288.499 4.067 1.135.606.499 1.644 1.606 1.644 3.793 0 2.159-1.067 3.35-1.962 3.958-1.038.692-2.134.886-4.355.886H47.29Zm-9.605 0V14.685h-4.817V12h13.383l-.951 2.685h-4.27V28h-3.345Zm-13.354-9.605h1.875c.576 0 .865 0 1.153-.084.78-.22 1.27-.885 1.27-1.799 0-1.08-.52-1.55-1.27-1.771-.317-.083-.634-.111-1.269-.111h-1.76v3.765Zm.029 2.768v4.207h2.307c.692 0 1.327-.055 1.788-.47.462-.416.664-.941.664-1.634 0-.525-.145-1.024-.433-1.384-.49-.581-1.096-.72-2.134-.72H24.36Zm5.336-1.689v.055c.634.222 1.24.61 1.557.859.98.775 1.413 1.799 1.413 3.127 0 2.187-1.211 3.765-3.201 4.263-.606.166-1.24.222-2.423.222h-6.028V12h5.336c1.096 0 1.846.056 2.509.222 1.932.498 3.202 1.771 3.202 3.792 0 1.08-.404 1.993-1.068 2.602-.288.277-.692.609-1.297.858Z"
+                        fill="currentColor"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+
+    <main class="form-signin w-100 m-auto flex-fill">
+        <form>
+            <h1 class="h3 mb-3 fw-normal text-center">Регистрация в ВТБ Банка</h1>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingName" placeholder="Имя" required>
+                <label for="floatingName">Имя</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingFName" placeholder="Фамилия" required>
+                <label for="floatingFName">Фамилия</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingLName" placeholder="Отчество" required>
+                <label for="floatingLName">Отчество</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" required>
+                <label for="floatingEmail">Электронная почта</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль" required>
+                <label for="floatingPassword">Пароль</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Подтвердите пароль" required>
+                <label for="floatingConfirmPassword">Подтвердите пароль</label>
+            </div>
+
+            <div class="form-check text-start my-3">
+                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Политика Конфиденциальности
+                </label>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2 mb-2" type="submit">Зарегистрироваться</button>
+            <button class="btn btn-primary w-100 py-2" type="button">Есть Аккаунт</button>
+        </form>
+    </main>
+
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md"></div>
+            <div class="col-6 col-md text-center">
+                <h5>Отделения и банкоматы</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1">
+                        <a class="link-secondary text-decoration-none" href="#">© Банк ВТБ (ПАО), 2007–2024</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md text-center">
+                <h5>Контакты</h5>
+                <ul class="list-unstyled text-small">
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">1 000</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">8 800 100-24-24</a></li>
+                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">+7 495 777-24-24</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

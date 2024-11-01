@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Banking Website Test</title>
+    <link rel="stylesheet" href="/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-
+</head>
     <header id="header" class="v1-c-hYYuhA v1-c-fUDpwJ v1-c-fUDpwJ-fbymLd-isAuthorized-true">
         <div class="v1-c-hYYuhA v1-c-hUZzbq">
             <a aria-label="Изображение Логотип ВТБ" data-test-id="logoLink" class="v1-c-jTlMYo" href="/">
@@ -51,8 +51,46 @@
                         </span>
                     </button>
                 </div>
-                <div class="sc-1f7ttpo-0
-                            hznfdU">
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        id="dropdownMenu" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" id="dropdownMenuItems" style="display: none;">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+
+                <script>
+                    const dropdownMenu = document.getElementById('dropdownMenu');
+                    const dropdownMenuItems = document.getElementById('dropdownMenuItems');
+
+                    dropdownMenu.addEventListener('click', function (event) {
+                        event.preventDefault(); // Предотвращаем переход по ссылке
+                        const isVisible = dropdownMenuItems.style.display === 'block';
+                        dropdownMenuItems.style.display = isVisible ? 'none' : 'block';
+                    });
+
+                    // Закрытие меню при клике вне его
+                    document.addEventListener('click', function (event) {
+                        if (!dropdownMenu.contains(event.target) && !dropdownMenuItems.contains(event.target)) {
+                            dropdownMenuItems.style.display = 'none';
+                        }
+                    });
+                </script>
+
+
+
+
+
+
+                <div class="sc-1f7ttpo-0hznfdU">
                 </div>
             </div>
         </div>
@@ -169,7 +207,6 @@
             наступления месяца, в котором вы будете совершать покупки: уже 26-ого числа каждого месяца откроется
             выбор категорий на следующий. Если категории не выбраны, кешбэк не начисляется.</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <!-- Your other content here -->
         </div>
         <img src="https://storage.multibonus.ru/land_main_vtbo2_1f41b10013.png" alt="Как выбрать категории?"
             style="width: 100%; margin-top: 30px; border-radius: 10px; object-fit: cover;">
