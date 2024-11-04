@@ -14,4 +14,4 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('transaction', TransactionController::class);
 
 # группа маршрутов для аккаунтов
-Route::apiResource('account', AccountController::class);
+Route::apiResource('account',     AccountController::class);

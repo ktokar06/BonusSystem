@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.4 (Ubuntu 16.4-0ubuntu0.24.04.2)
--- Dumped by pg_dump version 16.4 (Ubuntu 16.4-0ubuntu0.24.04.2)
+-- Dumped from database version 16.3
+-- Dumped by pg_dump version 16.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -29,6 +29,7 @@ CREATE TABLE public.accounts (
     login character varying(64) NOT NULL,
     password character varying(64) NOT NULL,
     type character varying(255) NOT NULL,
+    authkey character varying(64),
     CONSTRAINT accounts_type_check CHECK (((type)::text = ANY (ARRAY[('юр'::character varying)::text, ('физ'::character varying)::text])))
 );
 
@@ -474,27 +475,27 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: accounts; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.accounts (id, login, password, type) FROM stdin;
-PCdfIgiOUapKRywD	login1	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-GzMfWovvzVQTNDQJ	login2	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-FgbOiswleMGirqyg	login3	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-YwWivRnwAfaKxofO	login4	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-YoUXoYhdLDUvxGLH	login5	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-JwrIOFqtqqomqIwo	login6	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-wMGHPyCXMYmtimaj	login7	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-WDEFgkWuNfCNugkn	login8	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-fAZjSYGYHoKVQHti	login9	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-UJCbZjUPBwsTynVS	login10	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
-HLlYmUhsTjEjcwRy	login11	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-GQIWmkAXIIWdVIyw	login12	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-zZPMdHUeftakgclH	login13	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-YFkAzFJdyjCckjXY	login14	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-dpUcFnhlDfIlmMDb	login15	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-EorgZeFUQQPjEblY	login16	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-dUyRciEIPPymNhWo	login17	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-yRwpNauwOhKJmPFd	login18	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-fRVhTYNOuqSFKoQX	login19	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
-YnDNbHrkBJXnarHf	login20	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+COPY public.accounts (id, login, password, type, authkey) FROM stdin;
+GzMfWovvzVQTNDQJ	login2	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+FgbOiswleMGirqyg	login3	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+YwWivRnwAfaKxofO	login4	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+YoUXoYhdLDUvxGLH	login5	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+JwrIOFqtqqomqIwo	login6	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+wMGHPyCXMYmtimaj	login7	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+WDEFgkWuNfCNugkn	login8	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+fAZjSYGYHoKVQHti	login9	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+UJCbZjUPBwsTynVS	login10	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	\N
+HLlYmUhsTjEjcwRy	login11	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+GQIWmkAXIIWdVIyw	login12	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+zZPMdHUeftakgclH	login13	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+YFkAzFJdyjCckjXY	login14	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+dpUcFnhlDfIlmMDb	login15	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+EorgZeFUQQPjEblY	login16	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+dUyRciEIPPymNhWo	login17	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+yRwpNauwOhKJmPFd	login18	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+fRVhTYNOuqSFKoQX	login19	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+YnDNbHrkBJXnarHf	login20	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр	\N
+PCdfIgiOUapKRywD	login1	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ	36e4166b6fdb919fe40b1d8d0ccd6fd8ea5fa087270570b64b375ca2600703d0
 \.
 
 

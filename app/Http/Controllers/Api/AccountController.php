@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+
 use App\Http\Requests\StoreAccountRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
+
 use App\Models\Account;
 use Illuminate\Support\Facades\DB;
 
@@ -15,25 +17,26 @@ class AccountController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-		
-		$headers = $request->header();
-		
-		$loginError    = response('Invalid login field',    400)
-			->header('Content-type', 'text/plain'); 
-		$passwordError = response('Invalid password field', 400)
-			->header('Content-type', 'text/plain'); 
+	{
 
+		/*
+		 * Возвращает айди аккаунта по его ключю авторизации
+		 */
 
-		if (!$login = $request->header('login')) {
-			return $loginError;	
-		} else if ($password = $request->header('password')){
-			return $passwordError;	
+		$key = $request->header('authkey');
+
+		if (!$key) {
+			return response('Authkey required', 422)
+				->header('Content-type', 'text/plain');	
 		}
 
-		$password = hash('sha256', $password);
-
-		$accountId = DB::select("SELECT id FROM accounts WHERE login = '$login' AND password = '$password'");
+		$query     = "SELECT (id) FROM accounts WHERE authkey='$key'";
+		$accountId = DB::select($query);
+		
+		if (!$accountId){
+			return response('Invalid authkey', 422)
+				->header('Content-type', 'text/plain');
+		}
 	
 		return $accountId;	
     }
@@ -42,16 +45,33 @@ class AccountController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreAccountRequest $request)
-    {
-        //
+	{
+		/*
+		 * Создаёт нового пользователя в бд
+		 */
+		
+        return $request;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Account $account)
-    {
-        //
+    public function show(Account $account)	
+	{
+		/*
+		 * Возвращает балансы пользователя
+		 */	
+		
+		$id        = $account['id'];
+		$query     = "SELECT * FROM user_balance WHERE \"accountId\" = '$id'";
+		$balances  = DB::select($query);
+
+		if (!$balances) {
+			return response('No balances', 422)
+				->header('Content-type', 'text/plain');
+		}		
+			
+		return $balances;	
     }
 
     /**
