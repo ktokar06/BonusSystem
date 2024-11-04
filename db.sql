@@ -29,7 +29,7 @@ CREATE TABLE public.accounts (
     login character varying(64) NOT NULL,
     password character varying(64) NOT NULL,
     type character varying(255) NOT NULL,
-    CONSTRAINT accounts_type_check CHECK (((type)::text = ANY ((ARRAY['юр'::character varying, 'физ'::character varying])::text[])))
+    CONSTRAINT accounts_type_check CHECK (((type)::text = ANY (ARRAY[('юр'::character varying)::text, ('физ'::character varying)::text])))
 );
 
 
@@ -369,7 +369,7 @@ CREATE TABLE public.transaction (
     "recipientId" character varying(16) NOT NULL,
     "currencyType" character varying(255) NOT NULL,
     value real,
-    CONSTRAINT "transaction_currencyType_check" CHECK ((("currencyType")::text = ANY ((ARRAY['rub'::character varying, 'bonus'::character varying])::text[])))
+    CONSTRAINT "transaction_currencyType_check" CHECK ((("currencyType")::text = ANY (ARRAY[('rub'::character varying)::text, ('bonus'::character varying)::text])))
 );
 
 
@@ -383,7 +383,7 @@ CREATE TABLE public.user_balance (
     "accountId" character varying(16) NOT NULL,
     "balanceType" character varying(255) NOT NULL,
     value real,
-    CONSTRAINT "user_balance_balanceType_check" CHECK ((("balanceType")::text = ANY ((ARRAY['rub'::character varying, 'bonus'::character varying])::text[])))
+    CONSTRAINT "user_balance_balanceType_check" CHECK ((("balanceType")::text = ANY (ARRAY[('rub'::character varying)::text, ('bonus'::character varying)::text])))
 );
 
 
@@ -475,6 +475,26 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.accounts (id, login, password, type) FROM stdin;
+PCdfIgiOUapKRywD	login1	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+GzMfWovvzVQTNDQJ	login2	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+FgbOiswleMGirqyg	login3	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+YwWivRnwAfaKxofO	login4	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+YoUXoYhdLDUvxGLH	login5	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+JwrIOFqtqqomqIwo	login6	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+wMGHPyCXMYmtimaj	login7	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+WDEFgkWuNfCNugkn	login8	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+fAZjSYGYHoKVQHti	login9	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+UJCbZjUPBwsTynVS	login10	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	физ
+HLlYmUhsTjEjcwRy	login11	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+GQIWmkAXIIWdVIyw	login12	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+zZPMdHUeftakgclH	login13	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+YFkAzFJdyjCckjXY	login14	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+dpUcFnhlDfIlmMDb	login15	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+EorgZeFUQQPjEblY	login16	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+dUyRciEIPPymNhWo	login17	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+yRwpNauwOhKJmPFd	login18	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+fRVhTYNOuqSFKoQX	login19	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
+YnDNbHrkBJXnarHf	login20	9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08	юр
 \.
 
 
@@ -483,6 +503,16 @@ COPY public.accounts (id, login, password, type) FROM stdin;
 --
 
 COPY public.bonus_coefs ("companyId", coef) FROM stdin;
+HLlYmUhsTjEjcwRy	0.001
+GQIWmkAXIIWdVIyw	0.002
+zZPMdHUeftakgclH	0.003
+YFkAzFJdyjCckjXY	0.05
+dpUcFnhlDfIlmMDb	0.04
+EorgZeFUQQPjEblY	0.03
+dUyRciEIPPymNhWo	0.005
+yRwpNauwOhKJmPFd	0.001
+fRVhTYNOuqSFKoQX	0.03
+YnDNbHrkBJXnarHf	0.02
 \.
 
 
@@ -609,6 +639,31 @@ COPY public.sessions (id, user_id, ip_address, user_agent, payload, last_activit
 --
 
 COPY public.transaction ("transactionId", "senderId", "recipientId", "currencyType", value) FROM stdin;
+mJIFMdfVbdiazBPh	YwWivRnwAfaKxofO	zZPMdHUeftakgclH	rub	250
+VBIzOvYXmTuQITAY	YwWivRnwAfaKxofO	YoUXoYhdLDUvxGLH	rub	100
+UpoNNuxFkSOjDBjL	YwWivRnwAfaKxofO	zZPMdHUeftakgclH	bonus	50
+jxpIpwOcWUlOeTRW	YwWivRnwAfaKxofO	wMGHPyCXMYmtimaj	bonus	60
+SWrZsPHKGQprShih	YwWivRnwAfaKxofO	zZPMdHUeftakgclH	rub	100
+SIkAouIZjyYkMpGj	YoUXoYhdLDUvxGLH	YFkAzFJdyjCckjXY	bonus	100
+kbdhzZxabwMuWOvz	YoUXoYhdLDUvxGLH	YFkAzFJdyjCckjXY	bonus	100
+JzOOGxrpProFSwuP	YoUXoYhdLDUvxGLH	YwWivRnwAfaKxofO	bonus	100
+tsWKzbAqFDvfwxSU	YoUXoYhdLDUvxGLH	JwrIOFqtqqomqIwo	bonus	100
+swAoLFLiblZXEcIF	YoUXoYhdLDUvxGLH	WDEFgkWuNfCNugkn	bonus	100
+tsOUMsDAoBxhCpfV	wMGHPyCXMYmtimaj	YFkAzFJdyjCckjXY	bonus	24
+XRUgopagxgvvaKqL	wMGHPyCXMYmtimaj	YnDNbHrkBJXnarHf	bonus	20
+xknclNiwCKbbpojn	wMGHPyCXMYmtimaj	WDEFgkWuNfCNugkn	bonus	22
+zVMWtxufaXwnovtk	wMGHPyCXMYmtimaj	yRwpNauwOhKJmPFd	bonus	23
+bZflMWlLuqGwVjHy	wMGHPyCXMYmtimaj	YnDNbHrkBJXnarHf	bonus	24
+NeDvZtNYWdvXeHmy	PCdfIgiOUapKRywD	WDEFgkWuNfCNugkn	rub	200
+DcjwgTUibjzoKUSv	PCdfIgiOUapKRywD	fAZjSYGYHoKVQHti	rub	200
+XGgaXTaLLRiyyqUF	PCdfIgiOUapKRywD	GzMfWovvzVQTNDQJ	bonus	80
+iUdcDWopZxETxflc	PCdfIgiOUapKRywD	EorgZeFUQQPjEblY	bonus	65
+ISqVqvlGaxkzzoEO	PCdfIgiOUapKRywD	UJCbZjUPBwsTynVS	rub	325
+DUyIGGwKjZARsqWQ	WDEFgkWuNfCNugkn	UJCbZjUPBwsTynVS	rub	1000
+zVVeCPQvHMEfpnMM	WDEFgkWuNfCNugkn	YwWivRnwAfaKxofO	rub	734
+fwoFAVqaRoLwYgSv	WDEFgkWuNfCNugkn	fAZjSYGYHoKVQHti	bonus	125
+cYZZwcoMwUDuuLgz	WDEFgkWuNfCNugkn	GzMfWovvzVQTNDQJ	bonus	200
+AzwulGVDxsgBotOc	WDEFgkWuNfCNugkn	fRVhTYNOuqSFKoQX	rub	1125
 \.
 
 
@@ -617,6 +672,19 @@ COPY public.transaction ("transactionId", "senderId", "recipientId", "currencyTy
 --
 
 COPY public.user_balance ("accountId", "balanceType", value) FROM stdin;
+PCdfIgiOUapKRywD	bonus	200
+PCdfIgiOUapKRywD	rub	1000
+GzMfWovvzVQTNDQJ	bonus	250
+FgbOiswleMGirqyg	bonus	100
+YwWivRnwAfaKxofO	bonus	324
+YwWivRnwAfaKxofO	rub	500
+YoUXoYhdLDUvxGLH	bonus	500
+JwrIOFqtqqomqIwo	bonus	155
+wMGHPyCXMYmtimaj	bonus	124
+WDEFgkWuNfCNugkn	bonus	345
+WDEFgkWuNfCNugkn	rub	5000
+fAZjSYGYHoKVQHti	bonus	55
+UJCbZjUPBwsTynVS	bonus	23
 \.
 
 
@@ -877,14 +945,6 @@ ALTER TABLE ONLY public.transaction
 
 ALTER TABLE ONLY public.transaction
     ADD CONSTRAINT accounts_transaction_senderid_fk FOREIGN KEY ("senderId") REFERENCES public.accounts(id);
-
-
---
--- Name: transaction accounts_transaction_transactionid_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.transaction
-    ADD CONSTRAINT accounts_transaction_transactionid_fk FOREIGN KEY ("transactionId") REFERENCES public.accounts(id);
 
 
 --
