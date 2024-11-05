@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\BonusController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\AccountController;
 
@@ -19,4 +20,5 @@ Route::apiResource('transaction', TransactionController::class);
 Route::apiResource('account',     AccountController::class);
 
 # группа маршрутов для бонусов
+Route::apiResource('bonus',    BonusController::class);
 Route::get('getBalance/{id}', [AccountController::class, 'show']);

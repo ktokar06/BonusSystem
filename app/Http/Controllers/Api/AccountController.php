@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Models\Account;
 use Illuminate\Support\Facades\DB;
 
+
 class AccountController extends Controller
 {
     /**
@@ -80,7 +81,8 @@ class AccountController extends Controller
 
 		} while (DB::select("SELECT * FROM accounts WHERE id = '$accId'"));	
 		
-		$query = "INSERT INTO accounts (id, login, password, authkey, type) values (?, ?, ?, ?, ?)";
+		$query = "INSERT INTO accounts (id, login, password, authkey, type)
+			      values (?, ?, ?, ?, ?)";
 		
 		$isAdded = DB::insert($query, [$accId, $login, $hashPass, $hashKey, $type]);	
 		
@@ -102,7 +104,7 @@ class AccountController extends Controller
 		 * Возвращает балансы пользователя
 		 */	
 		
-		$id        = $account['id'];
+		$id        = $account['id'];	
 		$query     = "SELECT * FROM user_balance WHERE \"accountId\" = '$id'";
 		$balances  = DB::select($query);
 
@@ -119,7 +121,7 @@ class AccountController extends Controller
      */
     public function update(UpdateAccountRequest $request, Account $account)
     {
-        //
+        // пока не нужно
     }
 
     /**
@@ -127,6 +129,6 @@ class AccountController extends Controller
      */
     public function destroy(Account $account)
     {
-        //
+        // пока не нужно
     }
 }
