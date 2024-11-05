@@ -50,8 +50,48 @@ class AccountController extends Controller
 		 * Создаёт нового пользователя в бд
 		 */
 		
-        return $request;
-    }
+		/*
+		 * Ожидает запрос типа:
+		 * POST 
+		 * -H 'Accept: application/json'
+		 * -H 'Content-type: application/json'
+		 * --data '{"login":    "loginTest",
+		 *          "password": "passwordTest",
+		 *          "type":     "физ"}'
+		 */
+
+
+		$data  = $request->all();	
+		
+		$login = $data['login'   ];	
+		$pass  = $data['password'];	
+		$type  = $data['type'    ];
+
+		$key   = "$login:$pass";
+
+		$hashPass = hash('sha256', $pass); 	
+		$hashKey  = hash('sha256', $key );	
+		
+		// Generating accounId
+		do { 
+    		$word = array_merge(range('a', 'z'), range('A', 'Z'));
+    		shuffle($word);
+			$accId = substr(implode($word), 0, 16);
+
+		} while (DB::select("SELECT * FROM accounts WHERE id = '$accId'"));	
+		
+		$query = "INSERT INTO accounts (id, login, password, authkey, type) values (?, ?, ?, ?, ?)";
+		
+		$isAdded = DB::insert($query, [$accId, $login, $hashPass, $hashKey, $type]);	
+		
+   		if (!$isAdded) {
+			return response('Server error', 500)
+				->header('Content-type', 'text/plain');	
+		} 
+
+		return response('Succes', 200)
+			->header('Content-type', 'text/plain');		
+	}
 
     /**
      * Display the specified resource.

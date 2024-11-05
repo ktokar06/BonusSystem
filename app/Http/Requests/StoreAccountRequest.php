@@ -2,16 +2,25 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
 
 class StoreAccountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
-    {
-        return true;
+    public function authorize(Request $request): bool
+	{
+		$data  = $request->all();	
+		$login = $data['login'];	
+					
+		$query      = "SELECT * FROM accounts WHERE login = '$login'";
+		$hasDbLogin = DB::select($query); 	
+			
+		#login already exists ? 
+		return ($hasDbLogin) ? false : true;
     }
 
     /**
@@ -21,8 +30,10 @@ class StoreAccountRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+		return [
+			'login'   =>'bail|required',
+			'password'=>'required',
+			'type'    =>'required|in:юр,физ'
         ];
     }
 }
