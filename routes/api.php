@@ -10,8 +10,13 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+// Prefix /api/
+
 # группа маршрутов для транзакций
 Route::apiResource('transaction', TransactionController::class);
 
 # группа маршрутов для аккаунтов
 Route::apiResource('account',     AccountController::class);
+
+# группа маршрутов для бонусов
+Route::get('getBalance/{id}', [AccountController::class, 'show']);
