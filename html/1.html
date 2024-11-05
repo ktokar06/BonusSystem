@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваши Бонусы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom">Ваши Бонусы</h2>
+
+        <div class="d-flex flex-row align-items-start g-4">
+            <!-- Список кнопок -->
+            <div class="list-group d-grid gap-2 border-0 me-4">
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton1">
+                    <strong class="fw-semibold">Баланс</strong>
+                </button>
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton2">
+                    <strong class="fw-semibold">Уведомления</strong>
+                </button>
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton3">
+                    <strong class="fw-semibold">Подписки</strong>
+                </button>
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton4">
+                    <strong class="fw-semibold">История</strong>
+                </button>
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton5">
+                    <strong class="fw-semibold">Игра</strong>
+                </button>
+            </div>
+
+            <div class="col">
+                <!-- Карточка с бонусами -->
+                <div class="card mb-4 rounded-3 shadow-lg" id="bonusCard">
+                    <div class="card-body text-center" id="bonusContent">
+                        <svg id="bonusIcon" width="60" height="36" fill="none" xmlns="http://www.w3.org/2000/svg" class="mb-3">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.785 10.8h-13.8L3.981 8h13.8l-.996 2.8Zm-.498 1.4h-13.8L1.49 15h13.8l.996-2.8Zm-1.491 4.2H.995L0 19.2h13.8l.995-2.8Z" fill="#0AF"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M50.607 25.315h2.509c.952 0 1.529-.222 1.932-.72.202-.25.49-.692.49-1.522 0-.83-.288-1.412-.864-1.827-.346-.25-.808-.388-1.587-.388h-2.48v4.457ZM47.29 28V12h10.845l-.952 2.685h-6.576v3.543h2.682c2.163 0 3.288.499 4.067 1.135.606.499 1.644 1.606 1.644 3.793 0 2.159-1.067 3.35-1.962 3.958-1.038.692-2.134.886-4.355.886H47.29Zm-9.605 0V14.685h-4.817V12h13.383l-.951 2.685h-4.27V28h-3.345Zm-13.354-9.605h1.875c.576 0 .865 0 1.153-.084.78-.22 1.27-.885 1.27-1.799 0-1.08-.52-1.55-1.27-1.771-.317-.083-.634-.111-1.269-.111h-1.76v3.765Zm.029 2.768v4.207h2.307c.692 0 1.327-.055 1.788-.47.462-.416.664-.941.664-1.634 0-.525-.145-1.024-.433-1.384-.49-.581-1.096-.72-2.134-.72H24.36Zm5.336-1.689v.055c.634.222 1.24.61 1.557.859.98.775 1.413 1.799 1.413 3.127 0 2.187-1.211 3.765-3.201 4.263-.606.166-1.24.222-2.423.222h-6.028V12h5.336c1.096 0 1.846.056 2.509.222 1.932.498 3.202 1.771 3.202 3.792 0 1.08-.404 1.993-1.068 2.602-.288.277-.692.609-1.297.858Z" fill="currentColor"></path>
+                        </svg>
+                        <h1 class="card-title pricing-card-title display-4" id="bonusAmount">1000 бонусов</h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li class="fs-5 text-body-secondary" id="bonusDescription">МультиБонусы</li>
+                        </ul>
+                        <!-- Перевод в рубли -->
+                        <div class="transfer-button-styles__StyledWrapper-mmrLx cjKRNj">
+
+                            <button letter-spacing="normal" class="sc-aXZVg grJXDY sc-fPXMVe iLynGG sc-ezreuY jHfurK transfer-button-styles__StyledTransferButton-eSSsHr jtUyCs" disabled>Перевести</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Уведомления -->
+                <div id="notificationsContent" class="d-none">
+                    <h2 class="mb-4">Уведомления</h2>
+                    <div class="sc-jsJBEP cktOpk my-messages-style__StyledMessagesWrapper-idkvZL jlqhrE">
+                        <div class="no-messages-styles__StyledNoMessageWrapper-IIbfr hFqYnZ">
+                            <div class="no-messages-styles__StyledNoMessageTextWrapper-iexTxC FMCns">
+                                <h3 letter-spacing="normal" class="sc-aXZVg cQIama no-messages-styles__StyledNoMessagesTitle-eYUOiL erzljb">
+                                    Будем держать вас в курсе
+                                </h3>
+                                <p letter-spacing="0.2px" class="sc-aXZVg ipzYgs no-messages-styles__StyledNoMessagesDescription-dtNibV dXISNv">
+                                    Здесь будут уведомления про наши новые акции и интересные новости
+                                </p>
+                            </div>
+                            <picture class="no-messages-styles__StyledNoMessagesPicture-iKmVSP ljQHmS">
+                                <source media="(min-width: 1020px)" srcset="/images/notification-desktop.61987af8.png 1x, /images/notification-desktop@2x.35d9e849.png 2x">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Подписки -->
+                <div id="subscriptionsContent" class="d-none">
+                    <h2 class="mb-4">Подписки</h2>
+                    <div letter-spacing="normal" class="sc-aXZVg jetvsJ error-message-styles__StyledErrorText-hslNut DiZuU">
+                        <h3 letter-spacing="normal" class="sc-aXZVg cQIama error-message-styles__StyledErrorTitle-eTFfzQ dQZwwI">Ничего не
+                            нашли</h3>Здесь отображаются ранее использованные подписки
+                    </div>
+                </div>
+
+                <!-- История транзакций -->
+                <div id="historyContent" class="d-none">
+                    <h2 class="mb-4">История транзакций</h2>
+                    <table class="table table-bordered mb-4">
+                        <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Сумма (бонусы)</th>
+                                <th>Описание</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2024-11-01</td>
+                                <td>-100</td>
+                                <td>Покупка в магазине</td>
+                                <td class="text-success">Успешно</td>
+                            </tr>
+                            <tr>
+                                <td>2024-10-30</td>
+                                <td>-50</td>
+                                <td>Оплата за доставку</td>
+                                <td class="text-success">Успешно</td>
+                            </tr>
+                            <tr>
+                                <td>2024-10-28</td>
+                                <td>-200</td>
+                                <td>Подписка на премиум</td>
+                                <td class="text-success">Успешно</td>
+                            </tr>
+                            <tr>
+                                <td>2024-10-25</td>
+                                <td>-30</td>
+                                <td>Пожертвование</td>
+                                <td class="text-danger">Не удалось</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Игровой контент -->
+                <div id="gameContent" class="d-none">
+                    <div class="row align-items-stretch">
+                        <div class="col-md-6">
+                            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                                style="background-image: url('unsplash-photo-1.jpg'); height: 100%;">
+                                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Название Игры</h3>
+                                    <p>Увлекательное приключение, которое погружает вас в мир фантазий и новых возможностей.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-4">
+                                <h3 class="fw-bold">Описание Игры</h3>
+                                <p>Увлекательное приключение, которое погружает вас в мир фантазий и новых возможностей. Каждый уровень открывает что-то новое!</p>
+                                <button class="btn btn-primary">Играть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.list-group-item');
+            const historyContent = document.getElementById('historyContent');
+            const gameContent = document.getElementById('gameContent');
+            const notificationsContent = document.getElementById('notificationsContent');
+            const subscriptionsContent = document.getElementById('subscriptionsContent');
+            const bonusCard = document.getElementById('bonusCard');
+            const bonusAmount = document.getElementById('bonusAmount');
+            const bonusDescription = document.getElementById('bonusDescription');
+            const bonusData = {
+                balance: 1000,
+                description: 'МультиБонусы'
+            };
+
+            // Обновление отображения баланса
+            function updateBalance() {
+                bonusAmount.textContent = `${bonusData.balance} бонусов`;
+                bonusDescription.textContent = bonusData.description;
+            }
+
+            // Скрытие всех контентов
+            function hideAllContents() {
+                historyContent.classList.add('d-none');
+                gameContent.classList.add('d-none');
+                notificationsContent.classList.add('d-none');
+                subscriptionsContent.classList.add('d-none');
+                bonusCard.classList.add('d-none');
+            }
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const buttonText = this.textContent.trim(); // Получаем текст кнопки
+                    hideAllContents(); // Скрыть все контенты
+
+                    if (buttonText === 'Баланс') {
+                        bonusCard.classList.remove('d-none'); // Показываем карточку с бонусами
+                        updateBalance(); // Обновляем баланс
+                    } else if (buttonText === 'Уведомления') {
+                        notificationsContent.classList.remove('d-none'); // Показываем уведомления
+                    } else if (buttonText === 'Подписки') {
+                        subscriptionsContent.classList.remove('d-none'); // Показываем подписки
+                    } else if (buttonText === 'История') {
+                        historyContent.classList.remove('d-none'); // Показываем историю
+                    } else if (buttonText === 'Игра') {
+                        gameContent.classList.remove('d-none'); // Показываем игровой контент
+                    }
+                });
+            });
+
+            // Инициализация баланса
+            updateBalance();
+        });
+    </script>
+
+</body>
+</html>
