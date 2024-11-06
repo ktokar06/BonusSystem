@@ -6,53 +6,65 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Transaction;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+
+    public function index(Request $request)
     {
-		
 
-		return Transaction::all();
+        $limit_number = $request->header('limit');
 
-		#return response()->json([
-		#	'message'=>'test request works'
-		#]);	
-		
-		#return 'test request works!';
+        $userId = $request->header('userId');
+        
+        $totalTransactions = Transaction::count();
+        
+        if ($limit_number >= $totalTransactions) {
+
+            return Transaction::all();
+
+        } else {
+
+            $limit = $request->input('limit', $limit_number);
+            
+            $transactions = Transaction::limit($limit)->get();
+
+            return response()->json($transactions);
+
+        }
+
     }
 
-    /**
-	 * Store a newly created resource in storage.
-	 * Post запрос на создание транзакции
-     */
+
     public function store(StoreTransactionRequest $request)
     {
         return Transaction::create($request::all());
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Transaction $transaction)
+
+    public function show(Request $request)
     {
-        return $transaction;
+
+        $transactionId = $request->header('transactionId');
+
+        $transaction = Transaction::find($transactionId);
+
+        if (!$transaction) {
+            return response('Invalid transactionId', 404)
+                ->header('Content-type', 'text/plain');
+        }
+
+        return response()->json($transaction);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Transaction $transaction)
     {
         //
