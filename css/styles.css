@@ -40,12 +40,13 @@ header {
     z-index: 100;
     transition: transform 0.3s ease;
 }
-
+header.hide {
+    transform: translateY(-100%);
+}
 .logo {
     width: 60px;
     height: auto;
 }
-
 #header-actions-bar {
     display: flex;
     align-items: center;
@@ -262,6 +263,10 @@ footer {
     display: flex;
     justify-content: center;
 }
+
+
+
+
 
 
 

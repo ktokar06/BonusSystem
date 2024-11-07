@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -73,28 +72,16 @@
         </div>
     </header>
 
-
-    <script>
-        let lastScroll = 0;
-        const defaultOffset = 200;
-        const header = document.querySelector('.header');
-
-        const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
-        const containHide = () => header.classList.contains('hide');
-
-        window.addEventListener('scroll', () => {
-            if(scrollPosition() > lastScroll && !containHide() && scrollPosition() > defaultOffset) {
-                //scroll down
-                header.classList.add('hide');
-            }
-            else if(scrollPosition() < lastScroll && containHide()){
-                //scroll up
-                header.classList.remove('hide');
-            }
-
-            lastScroll = scrollPosition();
-        })
-    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdownToggle = document.getElementById('dropdownMenuLink');
+        const dropdownMenu = document.getElementById('dropdownMenuItems');
+        dropdownToggle.addEventListener('click', (event) => {
+            event.preventDefault(); // предотвращаем переход по ссылке
+            dropdownMenu.style.display = dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '' ? 'block' : 'none';
+        });
+    });
+</script>
 
     <div class="container px-4 py-5" id="custom-cards">
         <h2 class="pb-2 border-bottom">Ваши Бонусы</h2>
@@ -108,16 +95,16 @@
                 <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton2">
                     <strong class="fw-semibold">Перевод</strong>
                 </button>
-                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton3">
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton4">
                     <strong class="fw-semibold">Уведомления</strong>
                 </button>
-                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton4">
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton5">
                     <strong class="fw-semibold">Подписки</strong>
                 </button>
-                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton5">
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton6">
                     <strong class="fw-semibold">История</strong>
                 </button>
-                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton6">
+                <button class="list-group-item list-group-item-action rounded-3" id="listGroupButton7">
                     <strong class="fw-semibold">Игра</strong>
                 </button>
             </div>
@@ -140,6 +127,42 @@
                         </ul>
                     </div>
                 </div>
+
+                <div id="transferContent" class="d-none">
+                    <h2 class="mb-4">Перевод средств</h2>
+                    <div class="card-body text-center" id="bonusContentranslation">
+                        <svg id="bonusIcon" width="60" height="36" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="mb-3">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M16.785 10.8h-13.8L3.981 8h13.8l-.996 2.8Zm-.498 1.4h-13.8L1.49 15h13.8l.996-2.8Zm-1.491 4.2H.995L0 19.2h13.8l.995-2.8Z"
+                                fill="#0AF"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M50.607 25.315h2.509c.952 0 1.529-.222 1.932-.72.202-.25.49-.692.49-1.522 0-.83-.288-1.412-.864-1.827-.346-.25-.808-.388-1.587-.388h-2.48v4.457ZM47.29 28V12h10.845l-.952 2.685h-6.576v3.543h2.682c2.163 0 3.288.499 4.067 1.135.606.499 1.644 1.606 1.644 3.793 0 2.159-1.067 3.35-1.962 3.958-1.038.692-2.134.886-4.355.886H47.29Zm-9.605 0V14.685h-4.817V12h13.383l-.951 2.685h-4.27V28h-3.345Zm-13.354-9.605h1.875c.576 0 .865 0 1.153-.084.78-.22 1.27-.885 1.27-1.799 0-1.08-.52-1.55-1.27-1.771-.317-.083-.634-.111-1.269-.111h-1.76v3.765Zm.029 2.768v4.207h2.307c.692 0 1.327-.055 1.788-.47.462-.416.664-.941.664-1.634 0-.525-.145-1.024-.433-1.384-.49-.581-1.096-.72-2.134-.72H24.36Zm5.336-1.689v.055c.634.222 1.24.61 1.557.859.98.775 1.413 1.799 1.413 3.127 0 2.187-1.211 3.765-3.201 4.263-.606.166-1.24.222-2.423.222h-6.028V12h5.336c1.096 0 1.846.056 2.509.222 1.932.498 3.202 1.771 3.202 3.792 0 1.08-.404 1.993-1.068 2.602-.288.277-.692.609-1.297.858Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <h1 class="card-title pricing-card-title display-4" id="bonusAmountranslation">1000 бонусов</h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li class="fs-5 text-body-secondary" id="bonusDescriptiontranslation">МультиБонусы</li>
+                        </ul>
+                    </div>
+                    <form id="transferForm">
+                        <div class="mb-3">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Номер телефона:</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="+7 (___) ___-__-__" required
+                                pattern="^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$" title="Формат: +7 (___) ___-__-__">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="amount" class="form-label">Сумма перевода:</label>
+                            <input type="number" class="form-control" id="amount" placeholder="Введите сумму" required
+                                min="1" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Перевести</button>
+                    </form>
+                </div>
+
 
                 <div id="notificationsContent" class="d-none">
                     <h2 class="mb-4">Уведомления</h2>
@@ -231,11 +254,12 @@
                                 <h3 class="fw-bold">Описание Игры</h3>
                                 <p>Увлекательное приключение, которое погружает вас в мир фантазий и новых возможностей.
                                     Каждый уровень открывает что-то новое!</p>
-                                <button class="btn btn-primary">Играть</button>
+                                <a href="url_вашей_игры.html" class="btn btn-primary">Играть</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
             </div>
         </div>
@@ -249,34 +273,15 @@
             const notificationsContent = document.getElementById('notificationsContent');
             const subscriptionsContent = document.getElementById('subscriptionsContent');
             const bonusCard = document.getElementById('bonusCard');
-            const bonusAmount = document.getElementById('bonusAmount');
-            const bonusDescription = document.getElementById('bonusDescription');
-            const bonusData = {
-                balance: 1000,
-                description: 'МультиБонусы'
-            };
-
-            function updateBalance() {
-                bonusAmount.textContent = `${bonusData.balance} бонусов`;
-                bonusDescription.textContent = bonusData.description;
-            }
-
-            function hideAllContents() {
-                historyContent.classList.add('d-none');
-                gameContent.classList.add('d-none');
-                notificationsContent.classList.add('d-none');
-                subscriptionsContent.classList.add('d-none');
-                bonusCard.classList.add('d-none');
-            }
-
+            const transferContent = document.getElementById('transferContent');
             buttons.forEach(button => {
                 button.addEventListener('click', function () {
                     const buttonText = this.textContent.trim(); // Получаем текст кнопки
                     hideAllContents(); // Скрыть все контенты
-
                     if (buttonText === 'Баланс') {
                         bonusCard.classList.remove('d-none'); // Показываем карточку с бонусами
-                        updateBalance(); // Обновляем баланс
+                    } else if (buttonText === 'Перевод') {
+                        transferContent.classList.remove('d-none'); // Показываем форму перевода
                     } else if (buttonText === 'Уведомления') {
                         notificationsContent.classList.remove('d-none'); // Показываем уведомления
                     } else if (buttonText === 'Подписки') {
@@ -288,121 +293,136 @@
                     }
                 });
             });
-
-            updateBalance();
+            function hideAllContents() {
+                historyContent.classList.add('d-none');
+                gameContent.classList.add('d-none');
+                notificationsContent.classList.add('d-none');
+                subscriptionsContent.classList.add('d-none');
+                bonusCard.classList.add('d-none');
+                transferContent.classList.add('d-none');
+            }
+            // Обработка отправки формы перевода
+            const transferForm = document.getElementById('transferForm');
+            transferForm.addEventListener('submit', function (event) {
+                event.preventDefault(); // Предотвращаем перезагрузку страницы
+                const recipient = document.getElementById('recipient').value;
+                const amount = document.getElementById('amount').value;
+                alert(`Переведено ${amount} бонусов на счет ${recipient}`);
+                transferForm.reset(); // Сброс формы
+            });
         });
     </script>
 
     <div class="container px-4 py-5" id="hanging-icon">
         <h2 class="pb-2 border-bottom">Наши партнеры и их предложения</h2>
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/5ac798ea-cc3b-419f-8fdd-466ff43c19bc">
-                        <div class="card text-center">
-                            <img src="https://storage.multibonus.ru/2bf59f1c_0e08_4a4a_8780_7587753e9534_logo_afisha_ru_698d7e6ba2.png"
-                                class="card-img-top">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 20%</h2>
-                                <p class="card-text">Действует до 31.12.2024</p>
-                            </div>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/5ac798ea-cc3b-419f-8fdd-466ff43c19bc">
+                    <div class="card text-center">
+                        <img src="https://storage.multibonus.ru/2bf59f1c_0e08_4a4a_8780_7587753e9534_logo_afisha_ru_698d7e6ba2.png"
+                            class="card-img-top">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 20%</h2>
+                            <p class="card-text">Действует до 31.12.2024</p>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/2">
-                        <div class="card text-center">
-                            <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                                src="https://storage.multibonus.ru/front-prod/images/logo_gold_apple_64af8a9444.png"
-                                class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 5%</h2>
-                                <p class="card-text">Действует до 15.01.2025</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/3">
-                        <div class="card text-center">
-                            <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                                src="https://storage.multibonus.ru/f74d887b_27e5_49aa_be86_fd5a81e23e08_logo_Miuz_diamonds_0e9f827938.png"
-                                class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 10%</h2>
-                                <p class="card-text">Действует до 28.02.2025</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/4">
-                        <div class="card text-center">
-                            <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                                src="https://storage.multibonus.ru/749fb3c4_f2e6_4e26_b443_4194985573a4_logo_gruzovichkof_ce2a396af2.png"
-                                class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 7%</h2>
-                                <p class="card-text">Действует до 30.03.2025</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/5">
-                        <div class="card text-center">
-                            <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                                src="https://storage.multibonus.ru/5d1ac7c7_db7a_43aa_8c53_21ce3af30560_logo_Level_Travel_2_06486b04e8.png"
-                                class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 12%</h2>
-                                <p class="card-text">Действует до 15.04.2025</p>
-                            </div>
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/2">
+                    <div class="card text-center">
+                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
+                            src="https://storage.multibonus.ru/front-prod/images/logo_gold_apple_64af8a9444.png"
+                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 5%</h2>
+                            <p class="card-text">Действует до 15.01.2025</p>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/6">
-                        <div class="card text-center">
-                            <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                                src="https://front-public.storage.yandexcloud.net/d1ff72fb_aa5c_4788_8149_cd76bb762412_logo_yandex_travel2_0fd433d57b.png"
-                                class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 15%</h2>
-                                <p class="card-text">Действует до 30.05.2025</p>
-                            </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/3">
+                    <div class="card text-center">
+                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
+                            src="https://storage.multibonus.ru/f74d887b_27e5_49aa_be86_fd5a81e23e08_logo_Miuz_diamonds_0e9f827938.png"
+                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 10%</h2>
+                            <p class="card-text">Действует до 28.02.2025</p>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/7">
-                        <div class="card text-center">
-                            <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                                src="https://storage.multibonus.ru/dbbbcbd9_7137_4f95_b98d_6e62cd6797b4_logo_usmall_97580de63c.png"
-                                class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 8%</h2>
-                                <p class="card-text">Действует до 15.06.2025</p>
-                            </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/4">
+                    <div class="card text-center">
+                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
+                            src="https://storage.multibonus.ru/749fb3c4_f2e6_4e26_b443_4194985573a4_logo_gruzovichkof_ce2a396af2.png"
+                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 7%</h2>
+                            <p class="card-text">Действует до 30.03.2025</p>
                         </div>
-                    </a>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <a class="sc-gcUDKN eoTqhA" href="/partners/8">
-                        <div class="card text-center">
-                            <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                                src="https://storage.multibonus.ru/8948c7c4_f0a0_407d_af5b_f23d4fa1bd9e_logo_BAON_539a9f6386.png"
-                                class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                            <div class="card-body">
-                                <h2 class="card-title" style="color: black;">Кешбэк до 6%</h2>
-                                <p class="card-text">Действует до 30.07.2025</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/5">
+                    <div class="card text-center">
+                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
+                            src="https://storage.multibonus.ru/5d1ac7c7_db7a_43aa_8c53_21ce3af30560_logo_Level_Travel_2_06486b04e8.png"
+                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 12%</h2>
+                            <p class="card-text">Действует до 15.04.2025</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/6">
+                    <div class="card text-center">
+                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
+                            src="https://front-public.storage.yandexcloud.net/d1ff72fb_aa5c_4788_8149_cd76bb762412_logo_yandex_travel2_0fd433d57b.png"
+                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 15%</h2>
+                            <p class="card-text">Действует до 30.05.2025</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/7">
+                    <div class="card text-center">
+                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
+                            src="https://storage.multibonus.ru/dbbbcbd9_7137_4f95_b98d_6e62cd6797b4_logo_usmall_97580de63c.png"
+                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 8%</h2>
+                            <p class="card-text">Действует до 15.06.2025</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 mb-4">
+                <a class="sc-gcUDKN eoTqhA" href="/partners/8">
+                    <div class="card text-center">
+                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
+                            src="https://storage.multibonus.ru/8948c7c4_f0a0_407d_af5b_f23d4fa1bd9e_logo_BAON_539a9f6386.png"
+                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: black;">Кешбэк до 6%</h2>
+                            <p class="card-text">Действует до 30.07.2025</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     </div>
 
 
