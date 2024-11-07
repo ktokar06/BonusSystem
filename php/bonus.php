@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +10,7 @@
         body {
             margin: 0;
             overflow: hidden;
-            background: #f4f6f9; /* Светлый фон */
+            background: #f4f6f9;
             font-family: Arial, sans-serif;
             color: #333;
         }
@@ -17,16 +18,16 @@
         canvas {
             display: block;
             margin: 0 auto;
-            background: #0072c6; /* Темно-синий VTB */
-            border: 5px solid #00a3e0; /* Светло-синие границы */
-            border-radius: 10px; /* С закругленными углами */
+            background: #0072c6;
+            border: 5px solid #00a3e0;
+            border-radius: 10px;
         }
 
         #score, #lives {
             position: absolute;
             top: 10px;
             font-size: 20px;
-            color: #FFD700; /* Золотистый цвет для счёта и жизней */
+            color: #FFD700;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8), -1px -1px 2px rgba(0, 0, 0, 0.8);
         }
 
@@ -68,13 +69,14 @@
         #restartButton:hover {
             background: #005bb5;
         }
+
         #gameInterface {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             padding: 10px;
-            background: #00367A; /* Темно-синий интерфейс */
+            background: #00367A;
             color: white;
             text-align: center;
             font-size: 22px;
@@ -103,23 +105,23 @@
 
         let moneyBags = [];
         let score = 0;
-        let lives = 3; // Количество жизней
+        let lives = 3;
         let isGameOver = false;
         const bagWidth = 30;
         const bagHeight = 30;
-        const basketHeight = 20; // Увеличена высота корзины
+        const basketHeight = 20;
         let basketX = canvas.width / 2 - bagWidth / 2;
 
         function drawBasket() {
-            ctx.fillStyle = '#8B4513'; // Коричневый цвет для корзины
+            ctx.fillStyle = '#8B4513';
             ctx.fillRect(basketX, canvas.height - basketHeight, bagWidth, basketHeight);
-            ctx.strokeStyle = '#FFFFFF'; // Цвет обводки
-            ctx.lineWidth = 3; // Толщина обводки
-            ctx.strokeRect(basketX, canvas.height - basketHeight, bagWidth, basketHeight); // Обводка корзины
+            ctx.strokeStyle = '#FFFFFF';
+            ctx.lineWidth = 3;
+            ctx.strokeRect(basketX, canvas.height - basketHeight, bagWidth, basketHeight);
         }
 
         function drawMoneyBags() {
-            ctx.fillStyle = '#FFD700'; // Золотой цвет для мешков
+            ctx.fillStyle = '#FFD700';
             moneyBags.forEach(bag => {
                 ctx.fillRect(bag.x, bag.y, bagWidth, bagHeight);
             });
@@ -133,18 +135,18 @@
                     y < moneyBags[i].y + bagHeight &&
                     y + bagHeight > moneyBags[i].y
                 ) {
-                    return true; // Есть наложение
+                    return true;
                 }
             }
-            return false; // Нет наложения
+            return false;
         }
 
         function updateMoneyBags() {
-            if (Math.random() < 0.016) { // 1.6% шанс появления нового мешка денег
+            if (Math.random() < 0.016) {
                 let newX, newY;
                 do {
                     newX = Math.random() * (canvas.width - bagWidth);
-                    newY = Math.random() * 100; // Случайная начальная позиция по Y (0-100 пикселей)
+                    newY = Math.random() * 100;
                 } while (checkCollision(newX, newY));
 
                 moneyBags.push({
@@ -156,22 +158,19 @@
             moneyBags.forEach((bag, index) => {
                 bag.y += 6;
 
-                // Проверка на ловлю мешка денег
                 if (bag.y + bagHeight >= canvas.height - basketHeight &&
                     bag.x < basketX + bagWidth &&
                     bag.x + bagWidth > basketX) {
                     score++;
                     document.getElementById('score').innerText = 'Счет: ' + score;
-                    moneyBags.splice(index, 1); // Удаляем пойманный мешок
+                    moneyBags.splice(index, 1);
                 }
 
-                // Если мешок упал ниже экрана
                 if (bag.y > canvas.height) {
                     lives--;
                     document.getElementById('lives').innerText = 'Жизни: ' + lives;
-                    moneyBags.splice(index, 1); // Удаляем упавший мешок
+                    moneyBags.splice(index, 1);
 
-                    // Проверка на окончание игры
                     if (lives <= 0) {
                         isGameOver = true;
                     }
@@ -180,8 +179,8 @@
         }
 
         function drawGameOver() {
-            document.getElementById('finalScore').innerText = score; // Отображаем конечный счет
-            document.getElementById('gameOver').style.display = 'block'; // Показываем модальное окно
+            document.getElementById('finalScore').innerText = score;
+            document.getElementById('gameOver').style.display = 'block';
         }
 
         function update() {
@@ -207,8 +206,7 @@
         }
 
         document.getElementById('restartButton').addEventListener('click', function() {
-            // Перенаправление на новую страницу
-            window.location.href = "newpage.html"; // замените "newpage.html" на нужный вам URL
+            window.location.href = "newpage.html";
         });
 
         document.addEventListener('mousemove', function(event) {
@@ -221,4 +219,3 @@
 </body>
 
 </html>
-        

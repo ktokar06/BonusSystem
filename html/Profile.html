@@ -4,34 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Website Test</title>
+    <title>Profile Website Test</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-        .form-signin {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            max-width: 400px;
-            margin: auto;
-            height: 100%;
-        }
-
-        footer {
-            margin-top: auto;
-            text-align: center;
-        }
-    </style>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body>
     <header id="header" class="v1-c-hYYuhA v1-c-fUDpwJ v1-c-fUDpwJ-fbymLd-isAuthorized-true">
         <div class="v1-c-hYYuhA v1-c-hUZzbq"
             style="display: flex; align-items: center; justify-content: space-between;">
 
-            <a href="#" class="header-logo">
+            <a href="/BonusSystem/html/Home.html" class="header-logo">
                 <img src="https://multibonus.ru/images/home-logo-white.svg" alt="На главную"
                     class="header-logo-styles__StyledImage-hRXOXc iuCPms">
             </a>
@@ -68,58 +52,51 @@
                         </div>
                     </a>
                 </div>
+                <div class="dropdown" style="position: relative;">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        id="dropdownMenuLink" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" id="dropdownMenuItems"
+                        style="display: none; position: absolute; top: 100%; right: 0; z-index: 1000;">
+                        <li><a class="dropdown-item" href="#">Профиль</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/BonusSystem/html/Login.html">Выйти</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="form-signin w-100 m-auto flex-fill">
-        <form>
-            <h1 class="h3 mb-3 fw-normal text-center">Вход в ВТБ Банка</h1>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const profileImage = document.getElementById('dropdownMenuLink');
+            const dropdownMenu = document.getElementById('dropdownMenuItems');
 
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingLogin" placeholder="Логин" required>
-                <label for="floatingLogin">Имя</label>
-            </div>
+            profileImage.addEventListener('click', function (event) {
+                event.preventDefault();
+                const isVisible = dropdownMenu.style.display === 'block';
+
+                // Скрыть меню, если оно отображается
+                if (isVisible) {
+                    dropdownMenu.style.display = 'none';
+                } else {
+                    dropdownMenu.style.display = 'block';
+                }
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!event.target.closest('.dropdown')) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        });
+    </script>
 
 
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль" required>
-                <label for="floatingPassword">Пароль</label>
-            </div>
-
-            <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Политика Конфиденциальности
-                </label>
-            </div>
-
-            <button class="btn btn-primary w-100 py-2 mb-2" type="button" onclick="window.location.href='/BonusSystem/html/Home.html';">Войти</button>
-            <button class="btn btn-primary w-100 py-2" type="button" onclick="window.location.href='/BonusSystem/html/Registration.html';">Регистрация</button>
-        </form>
-    </main>
-
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md"></div>
-            <div class="col-6 col-md text-center">
-                <h5>Отделения и банкоматы</h5>
-                <ul class="list-unstyled text-small">
-                    <li class="mb-1">
-                        <a class="link-secondary text-decoration-none" href="#">© Банк ВТБ (ПАО), 2007–2024</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-6 col-md text-center">
-                <h5>Контакты</h5>
-                <ul class="list-unstyled text-small">
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">1 000</a></li>
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">8 800 100-24-24</a></li>
-                    <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">+7 495 777-24-24</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
 </body>
 
 </html>
