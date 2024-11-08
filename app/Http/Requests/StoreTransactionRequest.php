@@ -21,8 +21,8 @@ class StoreTransactionRequest extends FormRequest
             'transactionId'     => 'required|string',
             'senderId'          => 'required|string',
             'recipientId'       => 'required|string',
-            'amountOperation'   => 'required|integer',
             'currencyType'      => 'required|string|in:rub,bonus',
+            'value'             => 'required|integer'
         ];
     }
 

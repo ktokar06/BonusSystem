@@ -91,7 +91,7 @@ class AccountController extends Controller
 				->header('Content-type', 'text/plain');	
 		} 
 
-		return response('Succes', 200)
+		return response('Success', 200)
 			->header('Content-type', 'text/plain');		
 	}
 

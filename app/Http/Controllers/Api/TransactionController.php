@@ -13,52 +13,41 @@ class TransactionController extends Controller
 
     public function index(Request $request)
     {
-
         $limit_number = $request->header('limit');
-
-        $userId = $request->header('userId');
+        $userId       = $request->header('userId');
         
         $totalTransactions = Transaction::count();
         
         if ($limit_number >= $totalTransactions) {
-
-            return Transaction::all();
-
-        } else {
-
-            $limit = $request->input('limit', $limit_number);
-            
-            $transactions = Transaction::limit($limit)->get();
-
-            return response()->json($transactions);
-
+			return response()->json(Transaction::all());
         }
 
+        $limit = $request->input('limit', $limit_number);
+            
+        $transactions = Transaction::limit($limit)->get();
+
+		return response()->json($transactions);
     }
 
 
     public function store(StoreTransactionRequest $request)
-    {
-        return Transaction::create($request::all());
+    {			
+		//return $request;	
+		//return Transaction::create($request::all());
     }
 
 
-    public function show(Request $request)
-    {
+    public function show(Transaction $transaction)
+    {	
+		if (!$transaction) {
+            return response('Invalid transactionId', 422)
+                   ->header('Content-type', 'text/plain');
+		}
 
-        $transactionId = $request->header('transactionId');
-
-        $transaction = Transaction::find($transactionId);
-
-        if (!$transaction) {
-            return response('Invalid transactionId', 404)
-                ->header('Content-type', 'text/plain');
-        }
-
-        return response()->json($transaction);
+		return response()->json($transaction); 
     }
 
-
+	/*
     public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
         //
@@ -68,5 +57,7 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
-    }
+	}
+
+	 */
 }

@@ -20,5 +20,5 @@ Route::apiResource('transaction', TransactionController::class);
 Route::apiResource('account',     AccountController::class);
 
 # группа маршрутов для бонусов
-Route::apiResource('bonus',    BonusController::class);
-Route::get('getBalance/{id}', [AccountController::class, 'show']);
+Route::apiResource('bonus',       BonusController::class);
+Route::get('getBalance/{id}',    [AccountController::class, 'show']);

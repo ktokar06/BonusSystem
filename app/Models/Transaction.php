@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-	//
-	//
-	//
-
 	protected $table = 'transaction';
 
 	# Наш ID в дб не является инкрементным
 	# поэтому отключаем инкрементирование
+	protected $primaryKey  = 'transactionId';
 	protected $keyType      = 'string';
 	public    $incrementing = false;
 }
