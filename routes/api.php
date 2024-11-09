@@ -11,8 +11,15 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Prefix /api/
 
+
+
+
+
+
+
+
+					//<<<API>>>\\
 # группа маршрутов для транзакций
 Route::apiResource('transaction', TransactionController::class);
 

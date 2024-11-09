@@ -23,7 +23,6 @@ class AccountController extends Controller
 		/*
 		 * Возвращает айди аккаунта по его ключю авторизации
 		 */
-
 		$key = $request->header('authkey');
 
 		if (!$key) {
@@ -38,8 +37,8 @@ class AccountController extends Controller
 			return response('Invalid authkey', 422)
 				->header('Content-type', 'text/plain');
 		}
-	
-		return $accountId;	
+			
+		return response()->json($accountId);	
     }
 
     /**
