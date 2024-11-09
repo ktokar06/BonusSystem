@@ -5,37 +5,37 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+
 use App\Models\Transaction;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
 
-    public function index(Request $request)
-    {
-        $limit_number = $request->header('limit');
-        $userId       = $request->header('userId');
+	public function index(Request $request)
+	{
+		/*
+		 * Получение N транзакций 
+		 * определенного accountID (пользователя)
+		 */
 
-        $allTransactions = Transaction::all();
+        $limit = $request->header('limit'    );
+        $accId = $request->header('accountId');
 
-        $sortedTransactions = [];
-        foreach ($allTransactions as $transaction) {
-            if (isset($transaction['senderId']) && $transaction['senderId'] == $userId) {
-                $sortedTransactions[] = $transaction;
-            }
-        }
+		$query = "SELECT * FROM transaction 
+				  WHERE \"senderId\" = '$accId'
+                  LIMIT $limit";
+			
+		$queryResult = DB::select($query);
+		
+		if (!$queryResult) {
+            return response('Invalid Account Id', 422)
+                ->header('Content-type', 'text/plain');         
+		}
 
-        $countTransactions = count($sortedTransactions);
-        
-        if ($limit_number >= $countTransactions) {
-			return response()->json(sortedTransactions);
-        }
-
-        $limit = $request->input('limit', $limit_number);
-        
-        $result = array_slice($sortedTransactions, 0, $countTransactions + 1);
-
-		return response()->json($result); // Incorrect working
+		return response()->json($queryResult);	
     }
 
 
@@ -43,7 +43,7 @@ class TransactionController extends Controller
     {
        /*
         * Создает транзакцию между пользователями
-        * для передачи денег
+        * для передачи валюты
         */ 
         
         $data = $request->all();
@@ -57,20 +57,22 @@ class TransactionController extends Controller
         }
 
         $value       = $data['value'];
+		$curType     = $data['currency'];// currency type
 
-        $senderValue    = $this->getBalance($senderId,    'rub'); 
-        $recipientValue = $this->getBalance($recipientId, 'rub'); 
 
-        if ($senderValue < 0) { 
-            return response("Sender User not have balance", 422)
-                ->header('Content-type', 'text/plain'); 
-        } else if ($recipientValue < 0) {   
-            return response("Recipient User not have balance", 422)
-                ->header('Content-type', 'text/plain'); 
+        $senderValue    = $this->getBalance($senderId,    $curType); 
+        $recipientValue = $this->getBalance($recipientId, $curType); 
+
+        if (!$senderValue) { 
+            return response("Sender User not have $curType balance", 422)
+                   ->header('Content-type', 'text/plain'); 
+        } else if (!$recipientValue) {   
+            return response("Recipient User not have $curType balance", 422)
+                   ->header('Content-type', 'text/plain'); 
         }
 
         if ($senderValue - $value < 0) {
-            return response('Not enough value', 422)
+            return response('Not enough sender value', 422)
                 ->header('Content-type', 'text/plain');     
         }
         
@@ -97,23 +99,33 @@ class TransactionController extends Controller
                                              value)
                   values (?, ?, ?, ?, ?)";
         
-        DB::insert($query, [$transactionId, $senderId, $recipientId, 'rub', $value]); 
+		DB::insert($query, [$transactionId,
+                            $senderId,
+							$recipientId,
+							$curType,
+							$value]); 
                     
         return response('Success', 200)
             ->header('Content-type', 'text/plain'); 
     }
 
-    public function getBalance($accountId, $type) {
-        
-        $balanceQuery = "SELECT * FROM user_balance
-                         WHERE \"accountId\" = '$accountId'
-                         AND
-                         \"balanceType\"='$type'";      
+	public function getBalance($accountId, $type)
+	{
+		/*
+		 * Получение определенного баланса пользователя
+		 * по его accountId 
+		 * с выбором валюты
+		 */		 		
 
-        $balanceInfo = DB::select($balanceQuery);
+        $query = "SELECT * FROM user_balance
+                  WHERE \"accountId\" = '$accountId'
+                  AND
+                  \"balanceType\"='$type'";      
+
+        $queryResult = DB::select($balanceQuery);
         
         if (!$balanceInfo) {
-            return -1;
+            return false;
         }       
 
         $balanceArray = json_decode(json_encode($balanceInfo), true);
@@ -125,6 +137,11 @@ class TransactionController extends Controller
 
     public function show(Transaction $transaction)
     {	
+		/*
+		 * Получение информации о транзакции
+		 * по transactionId
+		 */	
+		
 		if (!$transaction) {
             return response('Invalid transactionId', 422)
                    ->header('Content-type', 'text/plain');
