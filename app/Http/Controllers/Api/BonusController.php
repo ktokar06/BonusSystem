@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\StoreBonusRequest;
+use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateBonusRequest;
 
 use App\Models\Account;
@@ -74,97 +74,31 @@ class BonusController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBonusRequest $request)
+    public function store(Request $request)
     {
 	   /*
 		* Создает транзакцию между пользователями
 		* для передачи бонусов
 		*/ 
 		
-		$data = $request->all();
+		$request->merge([
+			'currency'=>'bonus'
+		]);
 
-		$senderId    = $data['senderId'   ];		
-		$recipientId = $data['recipientId'];
+        $request = StoreTransactionRequest::createFrom($request);
 
-		if ($senderId == $recipientId) {
-			return response('Invalid recipientId', 422)
-				->header('Content-type', 'text/plain');			
-		}
-
-		$value       = $data['value'];
-
-		$senderValue    = $this->getBalance($senderId,    'bonus');	
-		$recipientValue = $this->getBalance($recipientId, 'bonus');	
-
-		if ($senderValue < 0) {	
-			return response("Sender User not have bonus balance", 422)
-				->header('Content-type', 'text/plain');	
-		} else if ($recipientValue < 0) {	
-			return response("Recipient User not have bonus balance", 422)
-				->header('Content-type', 'text/plain');	
-		}
-
-		if ($senderValue - $value < 0) {
-			return response('Not enough value', 422)
-				->header('Content-type', 'text/plain');		
-		}
-		
-		$senderValue    -= $value;
-		$recipientValue += $value;	
-
-		DB::statement("UPDATE user_balance SET value = $senderValue
-			           WHERE  \"accountId\"='$senderId'");		
-		DB::statement("UPDATE user_balance SET value = $recipientValue
-			           WHERE  \"accountId\"='$recipientId'");		
-
-		do { 
-    		$word = array_merge(range('a', 'z'), range('A', 'Z'));
-    		shuffle($word);
-			$transactionId = substr(implode($word), 0, 16);
-
-		} while (DB::select("SELECT * FROM transaction
-			                 WHERE \"transactionId\" = '$transactionId'"));	
-
-		$query = "INSERT INTO transaction (\"transactionId\",
-										   \"senderId\",
-										   \"recipientId\",
-										   \"currencyType\",
-                                             value)
-			      values (?, ?, ?, ?, ?)";
-		
-		DB::insert($query, [$transactionId, $senderId, $recipientId, 'bonus', $value]);	
-					
-		return response('Success', 200)
-			->header('Content-type', 'text/plain');	
+		return app('App\Http\Controllers\Api\TransactionController')
+           ->store($request);
     }
-
-	public function getBalance($accountId, $type) {
-		
-		$balanceQuery = "SELECT * FROM user_balance
-				         WHERE \"accountId\" = '$accountId'
-                         AND
-                         \"balanceType\"='$type'";		
-
-		$balanceInfo = DB::select($balanceQuery);
-		
-		if (!$balanceInfo) {
-			return -1;
-		}		
-
-		$balanceArray = json_decode(json_encode($balanceInfo), true);
-		$value        = $balanceArray[0]['value'];		
-		
-		return $value;				
-	}
-
 
     /**
      * Display the specified resource.
-     */
+     *
     public function show(Bonus $bonus)
     {
         //
     }
+	 */
 
     /**
      * Update the specified resource in storage.
@@ -203,9 +137,10 @@ class BonusController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     */
+     *
     public function destroy(Bonus $bonus)
     {
         //
-    }
+	}
+    */
 }

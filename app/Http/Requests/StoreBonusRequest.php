@@ -22,7 +22,9 @@ class StoreBonusRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'senderId'          => 'required|string',
+            'recipientId'       => 'required|string',
+            'value'             => 'required|integer'
         ];
     }
 }

@@ -122,13 +122,13 @@ class TransactionController extends Controller
                   AND
                   \"balanceType\"='$type'";      
 
-        $queryResult = DB::select($balanceQuery);
+        $queryResult = DB::select($query);
         
-        if (!$balanceInfo) {
+        if (!$queryResult) {
             return false;
         }       
 
-        $balanceArray = json_decode(json_encode($balanceInfo), true);
+        $balanceArray = json_decode(json_encode($queryResult), true);
         $value        = $balanceArray[0]['value'];      
         
         return $value;              

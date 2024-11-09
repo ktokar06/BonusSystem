@@ -88,11 +88,11 @@ class AccountController extends Controller
 		
    		if (!$isAdded) {
 			return response('Server error', 500)
-				->header('Content-type', 'text/plain');	
+                   ->header('Content-type', 'text/plain');	
 		} 
 
 		return response('Success', 200)
-			->header('Content-type', 'text/plain');		
+               ->header('Content-type', 'text/plain');		
 	}
 
     /**
@@ -118,7 +118,7 @@ class AccountController extends Controller
 
     /**
      * Update the specified resource in storage.
-     */
+	 *
     public function update(UpdateAccountRequest $request, Account $account)
     {
         // пока не нужно
@@ -126,9 +126,10 @@ class AccountController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     */
+     *
     public function destroy(Account $account)
     {
         // пока не нужно
-    }
+	}
+	*/
 }
