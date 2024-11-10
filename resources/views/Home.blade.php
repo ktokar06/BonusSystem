@@ -1,9 +1,5 @@
-
-{{ app('App\Http\Controllers\UserController')->checkLogIn() }}
-
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +16,7 @@
         <div class="v1-c-hYYuhA v1-c-hUZzbq"
             style="display: flex; align-items: center; justify-content: space-between;">
 
-            <a href="/BonusSystem/html/Home.html" class="header-logo">
+            <a href="{{ route('HomePage') }}" class="header-logo">
                 <img src="https://multibonus.ru/images/home-logo-white.svg" alt="На главную"
                     class="header-logo-styles__StyledImage-hRXOXc iuCPms">
             </a>
@@ -68,7 +64,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="/BonusSystem/html/Login.html">Выйти</a>
+                        <li><a class="dropdown-item" href="{{ app('App\Http\Controllers\UserController')->unLogIn()}}" >Выйти </a>
                         </li>
                     </ul>
                 </div>
@@ -125,7 +121,7 @@
                                 d="M50.607 25.315h2.509c.952 0 1.529-.222 1.932-.72.202-.25.49-.692.49-1.522 0-.83-.288-1.412-.864-1.827-.346-.25-.808-.388-1.587-.388h-2.48v4.457ZM47.29 28V12h10.845l-.952 2.685h-6.576v3.543h2.682c2.163 0 3.288.499 4.067 1.135.606.499 1.644 1.606 1.644 3.793 0 2.159-1.067 3.35-1.962 3.958-1.038.692-2.134.886-4.355.886H47.29Zm-9.605 0V14.685h-4.817V12h13.383l-.951 2.685h-4.27V28h-3.345Zm-13.354-9.605h1.875c.576 0 .865 0 1.153-.084.78-.22 1.27-.885 1.27-1.799 0-1.08-.52-1.55-1.27-1.771-.317-.083-.634-.111-1.269-.111h-1.76v3.765Zm.029 2.768v4.207h2.307c.692 0 1.327-.055 1.788-.47.462-.416.664-.941.664-1.634 0-.525-.145-1.024-.433-1.384-.49-.581-1.096-.72-2.134-.72H24.36Zm5.336-1.689v.055c.634.222 1.24.61 1.557.859.98.775 1.413 1.799 1.413 3.127 0 2.187-1.211 3.765-3.201 4.263-.606.166-1.24.222-2.423.222h-6.028V12h5.336c1.096 0 1.846.056 2.509.222 1.932.498 3.202 1.771 3.202 3.792 0 1.08-.404 1.993-1.068 2.602-.288.277-.692.609-1.297.858Z"
                                 fill="currentColor"></path>
                         </svg>
-                        <h1 class="card-title pricing-card-title display-4" id="bonusAmount">1000 бонусов</h1>
+                        <h1 class="card-title pricing-card-title display-4" id="bonusAmount">{{ app('App\Http\Controllers\UserController')->getBonuses($accountId) }}</h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li class="fs-5 text-body-secondary" id="bonusDescription">МультиБонусы</li>
                         </ul>
@@ -144,24 +140,23 @@
                                 d="M50.607 25.315h2.509c.952 0 1.529-.222 1.932-.72.202-.25.49-.692.49-1.522 0-.83-.288-1.412-.864-1.827-.346-.25-.808-.388-1.587-.388h-2.48v4.457ZM47.29 28V12h10.845l-.952 2.685h-6.576v3.543h2.682c2.163 0 3.288.499 4.067 1.135.606.499 1.644 1.606 1.644 3.793 0 2.159-1.067 3.35-1.962 3.958-1.038.692-2.134.886-4.355.886H47.29Zm-9.605 0V14.685h-4.817V12h13.383l-.951 2.685h-4.27V28h-3.345Zm-13.354-9.605h1.875c.576 0 .865 0 1.153-.084.78-.22 1.27-.885 1.27-1.799 0-1.08-.52-1.55-1.27-1.771-.317-.083-.634-.111-1.269-.111h-1.76v3.765Zm.029 2.768v4.207h2.307c.692 0 1.327-.055 1.788-.47.462-.416.664-.941.664-1.634 0-.525-.145-1.024-.433-1.384-.49-.581-1.096-.72-2.134-.72H24.36Zm5.336-1.689v.055c.634.222 1.24.61 1.557.859.98.775 1.413 1.799 1.413 3.127 0 2.187-1.211 3.765-3.201 4.263-.606.166-1.24.222-2.423.222h-6.028V12h5.336c1.096 0 1.846.056 2.509.222 1.932.498 3.202 1.771 3.202 3.792 0 1.08-.404 1.993-1.068 2.602-.288.277-.692.609-1.297.858Z"
                                 fill="currentColor"></path>
                         </svg>
-                        <h1 class="card-title pricing-card-title display-4" id="bonusAmountranslation">1000 бонусов</h1>
+                        <h1 class="card-title pricing-card-title display-4" id="bonusAmountranslation">{{ app('App\Http\Controllers\UserController')->getBonuses($accountId) }} бонусов</h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li class="fs-5 text-body-secondary" id="bonusDescriptiontranslation">МультиБонусы</li>
                         </ul>
                     </div>
-                    <form id="transferForm">
+                    <form action="{{ route('BonusSend') }}" method="POST">
+						@csrf
+						<input type="hidden" name="senderId" value="{{ $accountId }}" />
                         <div class="mb-3">
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Номер телефона:</label>
-                            <input type="tel" class="form-control" id="phone" placeholder="+7 (___) ___-__-__" required
-                                pattern="^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$" title="Формат: +7 (___) ___-__-__">
+                            <label class="form-label">ID Получателя</label>
+                            <input type="text" class="form-control" name="recipientId" placeholder="Account ID" required
+                            title="ID Получателя">
                         </div>
 
                         <div class="mb-3">
-                            <label for="amount" class="form-label">Сумма перевода:</label>
-                            <input type="number" class="form-control" id="amount" placeholder="Введите сумму" required
-                                min="1" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                            <label class="form-label">Сумма перевода:</label>
+                            <input type="number" class="form-control" name="amount" placeholder="Введите сумму" required min="1">
                         </div>
                         <button type="submit" class="btn btn-primary">Перевести</button>
                     </form>
@@ -206,37 +201,24 @@
                     <table class="table table-bordered mb-4">
                         <thead>
                             <tr>
-                                <th>Дата</th>
-                                <th>Сумма (бонусы)</th>
-                                <th>Описание</th>
-                                <th>Статус</th>
+                                <th>ID Транзакции</th>
+                                <th>Получатель</th>
+                                <th>Тип валюты</th>
+                                <th>Сумма</th>
                             </tr>
                         </thead>
                         <tbody>
+						@php
+							$data = app('App\Http\Controllers\UserController')->getTransactions($accountId);
+						@endphp
+						@foreach ($data->collect() as $row)
                             <tr>
-                                <td>2024-11-01</td>
-                                <td>-100</td>
-                                <td>Покупка в магазине</td>
-                                <td class="text-success">Успешно</td>
+                                <td>{{ $row['transactionId'] }}</td>
+                                <td>{{ $row['recipientId'] }}</td>
+                                <td>{{ $row['currencyType'] }}</td>
+                                <td>{{ $row['value'] }}</td>
                             </tr>
-                            <tr>
-                                <td>2024-10-30</td>
-                                <td>-50</td>
-                                <td>Оплата за доставку</td>
-                                <td class="text-success">Успешно</td>
-                            </tr>
-                            <tr>
-                                <td>2024-10-28</td>
-                                <td>-200</td>
-                                <td>Подписка на премиум</td>
-                                <td class="text-success">Успешно</td>
-                            </tr>
-                            <tr>
-                                <td>2024-10-25</td>
-                                <td>-30</td>
-                                <td>Пожертвование</td>
-                                <td class="text-danger">Не удалось</td>
-                            </tr>
+						@endforeach	
                         </tbody>
                     </table>
                 </div>
@@ -258,7 +240,7 @@
                                 <h3 class="fw-bold">Описание Игры</h3>
                                 <p>Увлекательное приключение, которое погружает вас в мир фантазий и новых возможностей.
                                     Каждый уровень открывает что-то новое!</p>
-                                <a href="url_вашей_игры.html" class="btn btn-primary">Играть</a>
+                                <a href="{{ route('GamePage') }}" class="btn btn-primary">Играть</a>
                             </div>
                         </div>
                     </div>
@@ -565,5 +547,10 @@
     </footer>
 </body>
 
-{{dd(session()->all())}}
+@if(session('error'))
+	<script>
+		alert("{{session('error')}}");	
+	</script>
+@endif
+
 </html>

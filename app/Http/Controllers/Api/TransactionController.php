@@ -13,14 +13,12 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-
 	public function index(Request $request)
 	{
 		/*
 		 * Получение N транзакций 
 		 * определенного accountID (пользователя)
 		 */
-
         $limit = $request->header('limit'    );
         $accId = $request->header('accountId');
 
@@ -34,7 +32,7 @@ class TransactionController extends Controller
             return response('Invalid Account Id', 422)
                 ->header('Content-type', 'text/plain');         
 		}
-
+		
 		return response()->json($queryResult);	
     }
 
@@ -44,8 +42,7 @@ class TransactionController extends Controller
        /*
         * Создает транзакцию между пользователями
         * для передачи валюты
-        */ 
-        
+        */  
         $data = $request->all();
 
         $senderId    = $data['senderId'   ];        
@@ -116,7 +113,6 @@ class TransactionController extends Controller
 		 * по его accountId 
 		 * с выбором валюты
 		 */		 		
-
         $query = "SELECT * FROM user_balance
                   WHERE \"accountId\" = '$accountId'
                   AND
@@ -149,18 +145,4 @@ class TransactionController extends Controller
 
 		return response()->json($transaction); 
     }
-
-	/*
-    public function update(UpdateTransactionRequest $request, Transaction $transaction)
-    {
-        //
-    }
-
-
-    public function destroy(Transaction $transaction)
-    {
-        //
-	}
-
-	 */
 }

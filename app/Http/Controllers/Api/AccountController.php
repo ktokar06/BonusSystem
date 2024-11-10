@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
 	{
-
 		/*
 		 * Возвращает айди аккаунта по его ключю авторизации
 		 */
@@ -41,9 +37,6 @@ class AccountController extends Controller
 		return response()->json($accountId);	
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreAccountRequest $request)
 	{
 		/*
@@ -94,15 +87,12 @@ class AccountController extends Controller
                ->header('Content-type', 'text/plain');		
 	}
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Account $account)	
 	{
 		/*
-		 * Возвращает балансы пользователя
-		 */	
-		
+		 * Возвращает все балансы пользователя 
+		 */
+
 		$id        = $account['id'];	
 		$query     = "SELECT * FROM user_balance WHERE \"accountId\" = '$id'";
 		$balances  = DB::select($query);
@@ -114,21 +104,4 @@ class AccountController extends Controller
 			
 		return $balances;	
     }
-
-    /**
-     * Update the specified resource in storage.
-	 *
-    public function update(UpdateAccountRequest $request, Account $account)
-    {
-        // пока не нужно
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-    public function destroy(Account $account)
-    {
-        // пока не нужно
-	}
-	*/
 }

@@ -1,4 +1,4 @@
-<?php
+@php
 session_start();
 
 $questions = [
@@ -35,12 +35,11 @@ if (isset($_SESSION['answers'])) {
     }
     unset($_SESSION['answers']);
 } else {
-    header("Location: index.php");
-    exit;
+	redirect()->route('game');
 }
 
 $points = $correctAnswers * 2
-?>
+@endphp
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -52,7 +51,7 @@ $points = $correctAnswers * 2
 </head>
 <body>
     <h1>Ваши результаты</h1>
-    <p>Вы ответили правильно на <?php echo $correctAnswers; ?> из 10 вопросов. Ваши баллы <?php echo $points ?></p>
-    <a href="index.php">Пройти викторину снова</a>
+    <p>Вы ответили правильно на @php echo $correctAnswers; @endphp из 10 вопросов. Ваши баллы @php echo $points @endphp </p>
+    <a href="{{ route('Home') }}">Назад</a>
 </body>
 </html>

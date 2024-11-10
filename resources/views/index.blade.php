@@ -1,4 +1,4 @@
-<?php
+@php
 session_start();
 
 
@@ -156,10 +156,12 @@ $randomQuestions = getRandomQuestions($questions);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['answers'] = $_POST['answers'];
-    header("Location: result.php");
+   
+	return view('result'); 
+	
     exit;
 }
-?>
+@endphp
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -171,20 +173,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Викторина по финансам</h1>
-    <form method="POST">
-        <?php foreach ($randomQuestions as $question => $answers): ?>
+    <form method="POST" action="{{ route('ResultPage') }}">
+        @php foreach ($randomQuestions as $question => $answers): @endphp
             <fieldset>
-                <legend><?php echo $question; ?></legend>
-                <?php foreach ($answers as $key => $value): ?>
-                    <?php if ($key !== 'correct'): ?>
+                <legend>@php echo $question; @endphp</legend>
+                @php foreach ($answers as $key => $value): @endphp
+                    @php if ($key !== 'correct'): @endphp
                         <label>
-                            <input type="radio" name="answers[<?php echo htmlspecialchars($question); ?>]" value="<?php echo $key; ?>" required>
-                            <?php echo htmlspecialchars($value); ?>
+                            <input type="radio" name="answers[@php echo htmlspecialchars($question); @endphp]" value="@php echo $key; @endphp" required>
+                            @php echo htmlspecialchars($value); @endphp
                         </label><br>
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                    @php endif;@endphp
+                @php endforeach; @endphp
             </fieldset>
-        <?php endforeach; ?>
+        @php endforeach; @endphp
         <button type="submit">Отправить ответы</button>
     </form>
 </body>

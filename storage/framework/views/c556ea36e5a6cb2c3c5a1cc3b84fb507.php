@@ -206,7 +206,7 @@
         }
 
         document.getElementById('restartButton').addEventListener('click', function() {
-            window.location.href = "newpage.html";
+            window.location.href = "<?php echo route('HomePage'); ?>";
         });
 
         document.addEventListener('mousemove', function(event) {
@@ -219,3 +219,4 @@
 </body>
 
 </html>
+<?php /**PATH /home/tobecomeawind/Devs/OpenApi/resources/views/bonus.blade.php ENDPATH**/ ?>

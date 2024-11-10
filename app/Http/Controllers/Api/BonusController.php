@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\DB;
 
 class BonusController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
 		/*
@@ -49,7 +46,7 @@ class BonusController extends Controller
 						->header('Content-type', 'text/plain');	
 				}
 				
-				return $companyCoef;
+				return response()->json($companyCoef);
 
 			case 'физ':
 				$bonusValueQuery = "SELECT (value) FROM user_balance
@@ -63,7 +60,7 @@ class BonusController extends Controller
 						->header('Content-type', 'text/plain');	
 				}
 				
-				return $bonusValue;	
+				return response()->json($bonusValue);	
 
 			default:
 				return response('Invalid account id', 422)
@@ -71,9 +68,6 @@ class BonusController extends Controller
 		}
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
 	   /*
@@ -91,18 +85,6 @@ class BonusController extends Controller
            ->store($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-    public function show(Bonus $bonus)
-    {
-        //
-    }
-	 */
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateBonusRequest $request, $accountBalance)
     {
 		/*
@@ -134,13 +116,4 @@ class BonusController extends Controller
 		return response('Success', 200)
 			->header('Content-type', 'text/plain');	
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-    public function destroy(Bonus $bonus)
-    {
-        //
-	}
-    */
 }

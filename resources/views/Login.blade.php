@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,9 +97,6 @@
 
             <button class="btn btn-primary w-100 py-2 mb-2" type="submit">Войти</button>
         </form>
-		<form> 
-			<button class="btn btn-primary w-100 py-2" type="button" formaction={{route('RegPage')}}>Регистрация</button>
-        </form>
     </main>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
@@ -125,13 +121,11 @@
         </div>
     </footer>
 </body>
+
 @if(session('error'))
 	<script>
 		alert("{{session('error')}}");	
 	</script>
 @endif
-
-{{ session()->forget('accountId')}}
-{{dd(session()->all())}}
 
 </html>
