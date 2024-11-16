@@ -24,6 +24,7 @@ class TransactionController extends Controller
 
 		$query = "SELECT * FROM transaction 
 				  WHERE \"senderId\" = '$accId'
+				  ORDER BY date DESC
                   LIMIT $limit";
 			
 		$queryResult = DB::select($query);
@@ -89,18 +90,24 @@ class TransactionController extends Controller
         } while (DB::select("SELECT * FROM transaction
                              WHERE \"transactionId\" = '$transactionId'")); 
 
+		
+		$transactionDate = date('Y-m-d');
+
+
         $query = "INSERT INTO transaction (\"transactionId\",
                                            \"senderId\",
                                            \"recipientId\",
                                            \"currencyType\",
-                                             value)
-                  values (?, ?, ?, ?, ?)";
-        
+											 value,
+                                             date)
+                  values (?, ?, ?, ?, ?, ?)";
+
 		DB::insert($query, [$transactionId,
                             $senderId,
 							$recipientId,
 							$curType,
-							$value]); 
+							$value,
+		                    $transactionDate]); 
                     
         return response('Success', 200)
             ->header('Content-type', 'text/plain'); 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking Website Test</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -16,7 +16,7 @@
         <div class="v1-c-hYYuhA v1-c-hUZzbq"
             style="display: flex; align-items: center; justify-content: space-between;">
 
-            <a href="{{ route('HomePage') }}" class="header-logo">
+            <a href="{{ route('HomePage') }}" class="logo">
                 <img src="https://multibonus.ru/images/home-logo-white.svg" alt="На главную"
                     class="header-logo-styles__StyledImage-hRXOXc iuCPms">
             </a>
@@ -64,7 +64,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="{{ app('App\Http\Controllers\UserController')->unLogIn()}}" >Выйти </a>
+                        <li><a class="dropdown-item" href="{{ app('App\Http\Controllers\UserController')->unLogIn()}}">Выйти </a>
                         </li>
                     </ul>
                 </div>
@@ -72,16 +72,35 @@
         </div>
     </header>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const dropdownToggle = document.getElementById('dropdownMenuLink');
-        const dropdownMenu = document.getElementById('dropdownMenuItems');
-        dropdownToggle.addEventListener('click', (event) => {
-            event.preventDefault(); // предотвращаем переход по ссылке
-            dropdownMenu.style.display = dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '' ? 'block' : 'none';
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Обработка выпадающего меню
+            const dropdownToggle = document.getElementById('dropdownMenuLink');
+            const dropdownMenu = document.getElementById('dropdownMenuItems');
+
+            dropdownToggle.addEventListener('click', (event) => {
+                event.preventDefault();
+                dropdownMenu.style.display = dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '' ? 'block' : 'none';
+            });
+
+            // Закрепление шапки при прокрутке
+            const header = document.getElementById('header');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', () => {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop) {
+                    // Прокрутка вниз
+                    header.classList.add('hidden');
+                } else {
+                    // Прокрутка вверх
+                    header.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Для мобильных устройств или если прокрутка на верх
+            });
         });
-    });
-</script>
+    </script>
 
     <div class="container px-4 py-5" id="custom-cards">
         <h2 class="pb-2 border-bottom">Ваши Бонусы</h2>
@@ -146,12 +165,12 @@
                         </ul>
                     </div>
                     <form action="{{ route('BonusSend') }}" method="POST">
-						@csrf
-						<input type="hidden" name="senderId" value="{{ $accountId }}" />
+                        @csrf
+                        <input type="hidden" name="senderId" value="{{ $accountId }}" />
                         <div class="mb-3">
                             <label class="form-label">ID Получателя</label>
                             <input type="text" class="form-control" name="recipientId" placeholder="Account ID" required
-                            title="ID Получателя">
+                                title="ID Получателя">
                         </div>
 
                         <div class="mb-3">
@@ -199,26 +218,30 @@
                 <div id="historyContent" class="d-none">
                     <h2 class="mb-4">История транзакций</h2>
                     <table class="table table-bordered mb-4">
-                        <thead>
-                            <tr>
-                                <th>ID Транзакции</th>
-                                <th>Получатель</th>
-                                <th>Тип валюты</th>
-                                <th>Сумма</th>
-                            </tr>
-                        </thead>
-                        <tbody>
 						@php
 							$data = app('App\Http\Controllers\UserController')->getTransactions($accountId);
-						@endphp
-						@foreach ($data->collect() as $row)
-                            <tr>
-                                <td>{{ $row['transactionId'] }}</td>
-                                <td>{{ $row['recipientId'] }}</td>
-                                <td>{{ $row['currencyType'] }}</td>
-                                <td>{{ $row['value'] }}</td>
-                            </tr>
-						@endforeach	
+						@endphp		
+                        @if ($data->status() != 200)	
+							<p>У пользователя ещё нет транзакций</p>
+						@else
+                        	<thead>
+                           		<tr>
+                                	<th>ID Транзакции</th>
+                                	<th>Получатель</th>
+                                	<th>Тип валюты</th>
+                                	<th>Сумма</th>
+                            	</tr>
+                        	</thead>
+                        	<tbody>
+							@foreach ($data->collect() as $row)
+                           		<tr>
+							    	<td>{{ $row['transactionId'] }}</td>
+                                	<td>{{ $row['recipientId'] }}</td>
+                                	<td>{{ $row['currencyType'] }}</td>
+                                	<td>{{ $row['value'] }}</td>
+                            	</tr>
+                        	@endforeach 
+                        @endif
                         </tbody>
                     </table>
                 </div>
@@ -240,7 +263,9 @@
                                 <h3 class="fw-bold">Описание Игры</h3>
                                 <p>Увлекательное приключение, которое погружает вас в мир фантазий и новых возможностей.
                                     Каждый уровень открывает что-то новое!</p>
-                                <a href="{{ route('GamePage') }}" class="btn btn-primary">Играть</a>
+								<form action="{{ route("GamePage")  }}" method="GET">
+                                	<button type="submit" class="btn btn-primary">Играть</button>
+								</form>
                             </div>
                         </div>
                     </div>
@@ -252,7 +277,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('.list-group-item');
             const historyContent = document.getElementById('historyContent');
             const gameContent = document.getElementById('gameContent');
@@ -261,7 +286,7 @@
             const bonusCard = document.getElementById('bonusCard');
             const transferContent = document.getElementById('transferContent');
             buttons.forEach(button => {
-                button.addEventListener('click', function () {
+                button.addEventListener('click', function() {
                     const buttonText = this.textContent.trim(); // Получаем текст кнопки
                     hideAllContents(); // Скрыть все контенты
                     if (buttonText === 'Баланс') {
@@ -279,6 +304,7 @@
                     }
                 });
             });
+
             function hideAllContents() {
                 historyContent.classList.add('d-none');
                 gameContent.classList.add('d-none');
@@ -289,7 +315,7 @@
             }
             // Обработка отправки формы перевода
             const transferForm = document.getElementById('transferForm');
-            transferForm.addEventListener('submit', function (event) {
+            transferForm.addEventListener('submit', function(event) {
                 event.preventDefault(); // Предотвращаем перезагрузку страницы
                 const recipient = document.getElementById('recipient').value;
                 const amount = document.getElementById('amount').value;
@@ -354,99 +380,10 @@
                 </a>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3 mb-4">
-                <a class="sc-gcUDKN eoTqhA" href="/partners/5">
-                    <div class="card text-center">
-                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                            src="https://storage.multibonus.ru/5d1ac7c7_db7a_43aa_8c53_21ce3af30560_logo_Level_Travel_2_06486b04e8.png"
-                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                        <div class="card-body">
-                            <h2 class="card-title" style="color: black;">Кешбэк до 12%</h2>
-                            <p class="card-text">Действует до 15.04.2025</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a class="sc-gcUDKN eoTqhA" href="/partners/6">
-                    <div class="card text-center">
-                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                            src="https://front-public.storage.yandexcloud.net/d1ff72fb_aa5c_4788_8149_cd76bb762412_logo_yandex_travel2_0fd433d57b.png"
-                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                        <div class="card-body">
-                            <h2 class="card-title" style="color: black;">Кешбэк до 15%</h2>
-                            <p class="card-text">Действует до 30.05.2025</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a class="sc-gcUDKN eoTqhA" href="/partners/7">
-                    <div class="card text-center">
-                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                            src="https://storage.multibonus.ru/dbbbcbd9_7137_4f95_b98d_6e62cd6797b4_logo_usmall_97580de63c.png"
-                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                        <div class="card-body">
-                            <h2 class="card-title" style="color: black;">Кешбэк до 8%</h2>
-                            <p class="card-text">Действует до 15.06.2025</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a class="sc-gcUDKN eoTqhA" href="/partners/8">
-                    <div class="card text-center">
-                        <img data-test-id="PARTNER-info-image" alt="" role="presentation"
-                            src="https://storage.multibonus.ru/8948c7c4_f0a0_407d_af5b_f23d4fa1bd9e_logo_BAON_539a9f6386.png"
-                            class="partner-info-styles__StyledPartnerInfoImage-iKYBqs LvCCG">
-                        <div class="card-body">
-                            <h2 class="card-title" style="color: black;">Кешбэк до 6%</h2>
-                            <p class="card-text">Действует до 30.07.2025</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+    </div>
     </div>
     </div>
 
-
-    <div class="container px-4 py-5" id="hanging-icons">
-        <h2 class="pb-2 border-bottom">Каждый месяц выбирайте категории с кешбэком</h2>
-        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-            <div class="col d-flex align-items-start">
-                <div class="cashback-category position-relative">
-                    <img src="https://storage.multibonus.ru/land_main_cashback_1_bda91f99fa.png" alt="Категория 1">
-                    <div class="land_main_cashback_cat_item_title">Новые категории ежемесячно</div>
-                </div>
-            </div>
-            <div class="col d-flex align-items-start">
-                <div class="cashback-category position-relative">
-                    <img src="https://storage.multibonus.ru/land_main_cashback_2_4f6e932687.png" alt="Категория 2">
-                    <div class="land_main_cashback_cat_item_title">3 категории на выбор</div>
-                </div>
-            </div>
-            <div class="col d-flex align-items-start">
-                <div class="cashback-category position-relative">
-                    <img src="https://storage.multibonus.ru/land_main_cashback_3_156b9ebaa1.png" alt="Категория 3">
-                    <div class="land_main_cashback_cat_item_title">+ 1 категория зарплатным клиентам</div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="container px-4 py-5" id="featured-3">
-        <h2 class="pb-2 border-bottom">Как выбрать категории?</h2>
-        <h2 class="text-center stretch-text">Выбирайте категории в приложении в ВТБ Онлайн, в разделе «Кешбэк». Выбирать
-            категории лучше заранее – до
-            наступления месяца, в котором вы будете совершать покупки: уже 26-ого числа каждого месяца откроется
-            выбор категорий на следующий. Если категории не выбраны, кешбэк не начисляется.</h2>
-        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-        </div>
-        <img src="https://storage.multibonus.ru/land_main_vtbo2_1f41b10013.png" alt="Как выбрать категории?"
-            style="width: 100%; margin-top: 30px; border-radius: 10px; object-fit: cover;">
-    </div>
 
     <div class="container px-4 py-5">
         <h2 class="pb-2 border-bottom">Частые вопросы</h2>
@@ -456,7 +393,6 @@
                 <h2 class="fw-bold text-body-emphasis">Основные вопросы о кешбэке</h2>
                 <p class="text-body-secondary">Здесь вы найдете ответы на часто задаваемые вопросы о программе кешбэка и
                     использовании бонусов.</p>
-                <a href="#" class="btn btn-primary btn-lg">Смотреть все вопросы</a>
             </div>
 
             <div class="col">
@@ -546,11 +482,5 @@
         </div>
     </footer>
 </body>
-
-@if(session('error'))
-	<script>
-		alert("{{session('error')}}");	
-	</script>
-@endif
 
 </html>

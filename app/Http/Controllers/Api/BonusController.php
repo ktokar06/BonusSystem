@@ -32,40 +32,24 @@ class BonusController extends Controller
 		$accTypeQuery = "SELECT * FROM accounts WHERE id = '$accId'";
 		$accInfo      = DB::select($accTypeQuery);
 		
-		$accInfoArray = json_decode(json_encode($accInfo), true);
-		$accType      = $accInfoArray[0]['type'];
-	
-		switch ($accType){
-			case 'юр':
-				$companyCoefQuery = "SELECT (coef) FROM bonus_coefs
-					                 WHERE \"companyId\" = '$accId'";
-				$companyCoef      = DB::select($companyCoefQuery);	
-				
-				if (!$companyCoef) {		
-					return response('No coef with companyId', 422)
-						->header('Content-type', 'text/plain');	
-				}
-				
-				return response()->json($companyCoef);
+		if (!$accInfo) {
+			return response('Invalid account id', 422)
+				->header('Content-type', 'text/plain');	
+		}
 
-			case 'физ':
-				$bonusValueQuery = "SELECT (value) FROM user_balance
+
+		$bonusValueQuery = "SELECT (value) FROM user_balance
 									WHERE \"accountId\" = '$accId'
 									AND
                                     \"balanceType\" = 'bonus'";
-				$bonusValue      = DB::select($bonusValueQuery);	
-				
-				if (!$bonusValue) {		
-					return response('No balance with accountId', 422)
-						->header('Content-type', 'text/plain');	
-				}
-				
-				return response()->json($bonusValue);	
-
-			default:
-				return response('Invalid account id', 422)
-					->header('Content-type', 'text/plain');	
+		$bonusValue      = DB::select($bonusValueQuery);	
+		
+		if (!$bonusValue) {		
+			return response('No balance with accountId', 422)
+				->header('Content-type', 'text/plain');	
 		}
+		
+		return response()->json($bonusValue);			
     }
 
     public function store(Request $request)

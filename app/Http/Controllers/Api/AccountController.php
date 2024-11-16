@@ -30,7 +30,7 @@ class AccountController extends Controller
 		$accountId = DB::select($query);
 		
 		if (!$accountId){
-			return response('Invalid authkey', 422)
+			return response('Неверные данные для входа', 422)
 				->header('Content-type', 'text/plain');
 		}
 			
@@ -56,35 +56,64 @@ class AccountController extends Controller
 
 		$data  = $request->all();	
 		
-		$login = $data['login'   ];	
-		$pass  = $data['password'];	
-		$type  = $data['type'    ];
+		$name    = $data['name'    ];	
+		$surname = $data['surname' ];	
+		$phone   = $data['phone'   ];	
+		$login   = $data['login'   ];	
+		$pass    = $data['password'];	
 
 		$key   = "$login:$pass";
 
 		$hashPass = hash('sha256', $pass); 	
 		$hashKey  = hash('sha256', $key );	
 		
-		// Generating accounId
+		// Generating accounId	 	
 		do { 
     		$word = array_merge(range('a', 'z'), range('A', 'Z'));
     		shuffle($word);
 			$accId = substr(implode($word), 0, 16);
 
 		} while (DB::select("SELECT * FROM accounts WHERE id = '$accId'"));	
+
+
+		$query = "INSERT INTO accounts (id,
+										login,
+										password,
+										authkey,
+										name,
+										surname,
+                                        phone)
+			      values (?, ?, ?, ?, ?, ?, ?)";
 		
-		$query = "INSERT INTO accounts (id, login, password, authkey, type)
-			      values (?, ?, ?, ?, ?)";
-		
-		$isAdded = DB::insert($query, [$accId, $login, $hashPass, $hashKey, $type]);	
+		$isAdded = DB::insert($query, [$accId,
+                                       $login,
+									   $hashPass,
+									   $hashKey,
+									   $name,
+									   $surname,
+                                       $phone]);	
 		
    		if (!$isAdded) {
 			return response('Server error', 500)
                    ->header('Content-type', 'text/plain');	
 		} 
 
-		return response('Success', 200)
-               ->header('Content-type', 'text/plain');		
+
+		
+		$query = "INSERT INTO user_balance(\"accountId\",
+                                           \"balanceType\",
+                                           value)
+                  VALUES (?, ?, ?)";
+
+		DB::insert($query, [$accId, 'rub'  , 0]);
+		DB::insert($query, [$accId, 'bonus', 0]);
+		
+
+		// Костыль неймоверный
+		// не повторять!!!
+		// это апи метод
+		return redirect()->route('LoginPage')
+			->with('success', 'Succes reg user');
 	}
 
     public function show(Account $account)	

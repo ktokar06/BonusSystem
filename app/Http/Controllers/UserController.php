@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -12,7 +11,7 @@ class UserController extends Controller
 	 * Контроллер для управления сессией пользователя
 	 */
 	public function login(Request $request)
-	{
+	{	
 		$data  = $request->all();	
 
 		$login = $data['login']; 
@@ -35,26 +34,29 @@ class UserController extends Controller
 
 		$accId = $response[0]['id'];
 
-		Session::put('accountId', $accId);
+		session()->put('accountId', $accId);
+		session()->save();
 
 		return redirect()->route('HomePage');
 	}
 
 	public function openHome()
 	{
-		$accId = Session::get('accountId');
-
-		if (!$accId){
-			return redirect('/')
-				->with('error', 'Сначала войдите, чтобы получить доступ к этой странице');
-		}
+		$accId = session()->get('accountId');
 
 		return view('Home', ['accountId' => "$accId"]);
 	}
 
+	public function openGame()
+	{
+		$accId = session()->get('accountId');
+
+		return view('game', ['accountId' => "$accId"]);
+	}
+
 	public function openLogin()
 	{
-		Session::forget('accountId');
+		session()->forget('accountId');
 
 		return view('Login');
 	}
@@ -104,10 +106,20 @@ class UserController extends Controller
 	{
 		$data = $request->all();	
 
-		$senderId = $data['senderId'];		
-		$recipientId = $data['recipientId'];
+		$senderId    = $data['senderId'];		
+		$phone       = $data['phone'];
 		$value       = $data['amount'];
-		
+
+		$query = "SELECT (id) FROM accounts WHERE phone='$phone'";
+		$queryResult = DB::select($query);
+
+		if (!$queryResult) {
+			return redirect('/home')
+				->with('error', 'Invalid phone number');	
+		}	
+
+		$recipientId = $queryResult[0]['id'];
+
 		$response =  Http::post(url('/').'/api/bonus', [
 			'senderId'    => "$senderId",
 			'recipientId' => "$recipientId",

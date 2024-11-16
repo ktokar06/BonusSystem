@@ -202,7 +202,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawMoneyBags();
             drawBasket();
-            if (isGameOver) {
+            if (isGameOver) {	
                 drawGameOver();
             }
         }

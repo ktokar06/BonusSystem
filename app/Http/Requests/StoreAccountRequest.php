@@ -11,16 +11,17 @@ class StoreAccountRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(Request $request): bool
+    public function authorize(Request $request)
 	{
 		$data  = $request->all();	
+		
 		$login = $data['login'];	
 					
 		$query      = "SELECT * FROM accounts WHERE login = '$login'";
 		$hasDbLogin = DB::select($query); 	
-			
+	
 		#login already exists ? 
-		return ($hasDbLogin) ? false : true;
+		return ($hasDbLogin) ? false: true;
     }
 
     /**
@@ -31,9 +32,11 @@ class StoreAccountRequest extends FormRequest
     public function rules(): array
     {
 		return [
-			'login'   =>'bail|required',
-			'password'=>'required',
-			'type'    =>'required|in:юр,физ'
+			'name'    =>'bail|required|string',
+			'surname' =>'required|string',
+			'login'   =>'required|string',
+			'password'=>'required|string',
+			'phone'   =>'required|string',
         ];
     }
 }
